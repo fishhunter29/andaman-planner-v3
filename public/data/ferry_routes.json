@@ -1,0 +1,332 @@
+[
+  {
+    "id": "PB-HL",
+    "from": "Port Blair",
+    "to": "Havelock",
+    "originId": "PB",
+    "destinationId": "HL",
+    "operators": [
+      {
+        "operator": "Makruzz",
+        "sampleFareINR": 1775.0
+      },
+      {
+        "operator": "Nautika",
+        "sampleFareINR": 1750.0
+      },
+      {
+        "operator": "Green Ocean",
+        "sampleFareINR": 1500.0
+      },
+      {
+        "operator": "DSS Government Ferry",
+        "sampleFareINR": null
+      }
+    ],
+    "typicalDurationMin": 90
+  },
+  {
+    "id": "PB-NL",
+    "from": "Port Blair",
+    "to": "Neil",
+    "originId": "PB",
+    "destinationId": "NL",
+    "operators": [
+      {
+        "operator": "Makruzz",
+        "sampleFareINR": 1625.0
+      },
+      {
+        "operator": "Nautika",
+        "sampleFareINR": 1550.0
+      },
+      {
+        "operator": "Green Ocean",
+        "sampleFareINR": 1200.0
+      },
+      {
+        "operator": "DSS Government Ferry",
+        "sampleFareINR": null
+      }
+    ],
+    "typicalDurationMin": 95
+  },
+  {
+    "id": "PB-LI",
+    "from": "Port Blair",
+    "to": "Long Island",
+    "originId": "PB",
+    "destinationId": "LI",
+    "operators": [
+      {
+        "operator": "DSS Government Ferry",
+        "sampleFareINR": 716.0
+      }
+    ],
+    "typicalDurationMin": 300
+  },
+  {
+    "id": "PB-DG",
+    "from": "Port Blair",
+    "to": "Diglipur (Aerial Bay)",
+    "originId": "PB",
+    "destinationId": "DG",
+    "operators": [
+      {
+        "operator": "DSS Government Ferry",
+        "sampleFareINR": 1495.0
+      }
+    ],
+    "typicalDurationMin": 690
+  },
+  {
+    "id": "PB-LA",
+    "from": "Port Blair",
+    "to": "Little Andaman (Hut Bay)",
+    "originId": "PB",
+    "destinationId": "LA",
+    "operators": [
+      {
+        "operator": "DSS Government Ferry",
+        "sampleFareINR": 980.0
+      }
+    ],
+    "typicalDurationMin": 480
+  },
+  {
+    "id": "PB-MB",
+    "from": "Port Blair",
+    "to": "Mayabunder",
+    "originId": "PB",
+    "destinationId": "MB",
+    "operators": [
+      {
+        "operator": "DSS Government Ferry",
+        "sampleFareINR": 1200.0
+      }
+    ],
+    "typicalDurationMin": 600
+  },
+  {
+    "id": "HL-NL",
+    "from": "Havelock",
+    "to": "Neil",
+    "originId": "HL",
+    "destinationId": "NL",
+    "operators": [
+      {
+        "operator": "Makruzz",
+        "sampleFareINR": 1348.0
+      },
+      {
+        "operator": "Nautika",
+        "sampleFareINR": 1299.0
+      },
+      {
+        "operator": "Green Ocean",
+        "sampleFareINR": 1201.0
+      },
+      {
+        "operator": "DSS Government Ferry",
+        "sampleFareINR": null
+      }
+    ],
+    "typicalDurationMin": 60
+  },
+  {
+    "id": "HL-LI",
+    "from": "Havelock",
+    "to": "Long Island",
+    "originId": "HL",
+    "destinationId": "LI",
+    "operators": [
+      {
+        "operator": "DSS Government Ferry",
+        "sampleFareINR": 400.0
+      }
+    ],
+    "typicalDurationMin": 120
+  },
+  {
+    "id": "HL-PB",
+    "from": "Havelock",
+    "to": "Port Blair",
+    "originId": "HL",
+    "destinationId": "PB",
+    "operators": [
+      {
+        "operator": "Makruzz",
+        "sampleFareINR": 1725.0
+      },
+      {
+        "operator": "Nautika",
+        "sampleFareINR": 1750.0
+      },
+      {
+        "operator": "Green Ocean",
+        "sampleFareINR": 1200.0
+      },
+      {
+        "operator": "Sea Link",
+        "sampleFareINR": 1700.0
+      },
+      {
+        "operator": "DSS Government Ferry",
+        "sampleFareINR": null
+      }
+    ],
+    "typicalDurationMin": 95
+  },
+  {
+    "id": "NL-LI",
+    "from": "Neil",
+    "to": "Long Island",
+    "originId": "NL",
+    "destinationId": "LI",
+    "operators": [
+      {
+        "operator": "DSS Government Ferry",
+        "sampleFareINR": 350.0
+      }
+    ],
+    "typicalDurationMin": 150
+  },
+  {
+    "id": "NL-HL",
+    "from": "Neil",
+    "to": "Havelock",
+    "originId": "NL",
+    "destinationId": "HL",
+    "operators": [
+      {
+        "operator": "DSS Government Ferry",
+        "sampleFareINR": 521.0
+      }
+    ],
+    "typicalDurationMin": 75
+  },
+  {
+    "id": "NL-PB",
+    "from": "Neil",
+    "to": "Port Blair",
+    "originId": "NL",
+    "destinationId": "PB",
+    "operators": [
+      {
+        "operator": "Makruzz",
+        "sampleFareINR": 1575.0
+      },
+      {
+        "operator": "Nautika",
+        "sampleFareINR": 1550.0
+      },
+      {
+        "operator": "Green Ocean",
+        "sampleFareINR": 1200.0
+      },
+      {
+        "operator": "DSS Government Ferry",
+        "sampleFareINR": null
+      }
+    ],
+    "typicalDurationMin": 90
+  },
+  {
+    "id": "LI-RG",
+    "from": "Long Island",
+    "to": "Rangat (Yeratta Jetty)",
+    "originId": "LI",
+    "destinationId": "RG",
+    "operators": [
+      {
+        "operator": "DSS Government Ferry",
+        "sampleFareINR": 27.0
+      }
+    ],
+    "typicalDurationMin": 60
+  },
+  {
+    "id": "LI-HL",
+    "from": "Long Island",
+    "to": "Havelock",
+    "originId": "LI",
+    "destinationId": "HL",
+    "operators": [
+      {
+        "operator": "DSS Government Ferry",
+        "sampleFareINR": 400.0
+      }
+    ],
+    "typicalDurationMin": 120
+  },
+  {
+    "id": "LI-NL",
+    "from": "Long Island",
+    "to": "Neil",
+    "originId": "LI",
+    "destinationId": "NL",
+    "operators": [
+      {
+        "operator": "DSS Government Ferry",
+        "sampleFareINR": 350.0
+      }
+    ],
+    "typicalDurationMin": 135
+  },
+  {
+    "id": "RG-LI",
+    "from": "Rangat (Yeratta Jetty)",
+    "to": "Long Island",
+    "originId": "RG",
+    "destinationId": "LI",
+    "operators": [
+      {
+        "operator": "DSS Government Ferry",
+        "sampleFareINR": 186.0
+      }
+    ],
+    "typicalDurationMin": 60
+  },
+  {
+    "id": "DG-PB",
+    "from": "Diglipur (Aerial Bay)",
+    "to": "Port Blair",
+    "originId": "DG",
+    "destinationId": "PB",
+    "operators": [
+      {
+        "operator": "DSS Government Ferry",
+        "sampleFareINR": 1495.0
+      }
+    ],
+    "typicalDurationMin": 690
+  },
+  {
+    "id": "LA-PB",
+    "from": "Little Andaman (Hut Bay)",
+    "to": "Port Blair",
+    "originId": "LA",
+    "destinationId": "PB",
+    "operators": [
+      {
+        "operator": "DSS Government Ferry",
+        "sampleFareINR": 980.0
+      }
+    ],
+    "typicalDurationMin": 480
+  },
+  {
+    "id": "MB-PB",
+    "from": "Mayabunder",
+    "to": "Port Blair",
+    "originId": "MB",
+    "destinationId": "PB",
+    "operators": [
+      {
+        "operator": "DSS Government Ferry",
+        "sampleFareINR": 1200.0
+      }
+    ],
+    "typicalDurationMin": 600
+  }
+]
