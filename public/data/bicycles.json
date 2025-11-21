@@ -1,0 +1,76 @@
+[
+  {
+    "islandId": "PB",
+    "island": "Port Blair (South Andaman)",
+    "model": "Hybrid Bicycle – 7-Speed (All-Terrain Light)",
+    "plan": "HALF_DAY",
+    "durationHours": 6,
+    "baseRateINR": 203.0,
+    "securityDepositINR": 500.0,
+    "isAvailable": true,
+    "lateFeePerHourINR": 68.0,
+    "peakSeasonMarkupPct": 15.0
+  },
+  {
+    "islandId": "PB",
+    "island": "Port Blair (South Andaman)",
+    "model": "Hybrid Bicycle – 7-Speed (All-Terrain Light)",
+    "plan": "DAY",
+    "durationHours": 24,
+    "baseRateINR": 338.0,
+    "securityDepositINR": 500.0,
+    "isAvailable": true,
+    "lateFeePerHourINR": 68.0,
+    "peakSeasonMarkupPct": 15.0
+  },
+
+  {
+    "islandId": "HL",
+    "island": "Havelock (Swaraj Dweep)",
+    "model": "Hybrid Bicycle – 7-Speed (All-Terrain Light)",
+    "plan": "HALF_DAY",
+    "durationHours": 6,
+    "baseRateINR": 405.0,
+    "securityDepositINR": 700.0,
+    "isAvailable": true,
+    "lateFeePerHourINR": 95.0,
+    "peakSeasonMarkupPct": 20.0
+  },
+  {
+    "islandId": "HL",
+    "island": "Havelock (Swaraj Dweep)",
+    "model": "Hybrid Bicycle – 7-Speed (All-Terrain Light)",
+    "plan": "DAY",
+    "durationHours": 24,
+    "baseRateINR": 608.0,
+    "securityDepositINR": 700.0,
+    "isAvailable": true,
+    "lateFeePerHourINR": 95.0,
+    "peakSeasonMarkupPct": 20.0
+  },
+
+  {
+    "islandId": "NL",
+    "island": "Neil (Shaheed Dweep)",
+    "model": "Hybrid Bicycle – 7-Speed (All-Terrain Light)",
+    "plan": "HALF_DAY",
+    "durationHours": 6,
+    "baseRateINR": 338.0,
+    "securityDepositINR": 600.0,
+    "isAvailable": true,
+    "lateFeePerHourINR": 81.0,
+    "peakSeasonMarkupPct": 18.0
+  },
+  {
+    "islandId": "NL",
+    "island": "Neil (Shaheed Dweep)",
+    "model": "Hybrid Bicycle – 7-Speed (All-Terrain Light)",
+    "plan": "DAY",
+    "durationHours": 24,
+    "baseRateINR": 540.0,
+    "securityDepositINR": 600.0,
+    "isAvailable": true,
+    "lateFeePerHourINR": 81.0,
+    "peakSeasonMarkupPct": 18.0
+  }
+]
