@@ -1,0 +1,404 @@
+/* Global resets */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-app: #050816;
+  --bg-panel: #0b1020;
+  --bg-chip: #111827;
+  --bg-summary: #020617;
+  --border-soft: rgba(148, 163, 184, 0.25);
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+  --accent: #22c55e;
+  --accent-soft: rgba(34, 197, 94, 0.12);
+}
+
+/* Page */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #020617 0, #020617 40%, #000 100%);
+  color: var(--text-main);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* App shell */
+.app-shell {
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Top bar: title + date/people selector row */
+.app-topbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.app-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Controls row */
+.app-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.control-chip {
+  background: var(--bg-chip);
+  border-radius: 999px;
+  padding: 4px 10px;
+  border: 1px solid var(--border-soft);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+}
+
+.control-chip select,
+.control-chip input {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: 0.78rem;
+  outline: none;
+}
+
+/* Layout: left cards, right map/summary */
+.app-layout {
+  display: grid;
+  grid-template-columns: 1.6fr 1.1fr;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+/* Left panel (locations & adventures) */
+.panel {
+  background: var(--bg-panel);
+  border-radius: 18px;
+  border: 1px solid var(--border-soft);
+  padding: 10px;
+  min-height: 300px;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.panel-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.panel-tabs {
+  display: inline-flex;
+  padding: 2px;
+  border-radius: 999px;
+  background: #020617;
+  border: 1px solid var(--border-soft);
+  gap: 2px;
+}
+
+.panel-tab {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.panel-tab.active {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* Location cards list */
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: calc(100vh - 220px);
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* Single card */
+.location-card {
+  border-radius: 14px;
+  border: 1px solid var(--border-soft);
+  padding: 8px;
+  background: radial-gradient(circle at top left, #0f172a 0, #020617 60%);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.location-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+}
+
+.location-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.location-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.chip {
+  border-radius: 999px;
+  padding: 2px 7px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.chip-accent {
+  border-color: rgba(34, 197, 94, 0.6);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* Card footer buttons */
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.btn-ghost {
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: transparent;
+  color: var(--text-main);
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #020617;
+  font-size: 0.75rem;
+  padding: 5px 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Right panel: map + trip summary */
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.map-panel {
+  background: var(--bg-panel);
+  border-radius: 18px;
+  border: 1px solid var(--border-soft);
+  padding: 10px;
+  min-height: 220px;
+}
+
+.map-placeholder {
+  border-radius: 14px;
+  border: 1px dashed rgba(148, 163, 184, 0.4);
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Trip summary card */
+.summary-panel {
+  background: var(--bg-summary);
+  border-radius: 18px;
+  border: 1px solid var(--border-soft);
+  padding: 10px;
+}
+
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.summary-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.summary-total {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.summary-breakdown {
+  margin-top: 4px;
+  border-top: 1px solid rgba(148, 163, 184, 0.25);
+  padding-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* CTA row inside summary (Request to book / Call) */
+.summary-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.btn-summary-primary {
+  flex: 1 1 120px;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #020617;
+  font-weight: 600;
+}
+
+.btn-summary-outline {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  border: 1px solid var(--border-soft);
+  background: transparent;
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+/* Mobile summary bar (bottom sticky) */
+.mobile-summary-bar {
+  position: sticky;
+  bottom: 0;
+  inset-inline: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(15, 23, 42, 0.95));
+  padding: 6px 10px 8px;
+  border-top: 1px solid rgba(148, 163, 184, 0.3);
+  display: none; /* enabled on small screens */
+}
+
+.mobile-summary-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobile-summary-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mobile-summary-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.mobile-summary-total {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.btn-mobile-summary {
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #020617;
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-panel {
+    display: none;
+  }
+
+  .mobile-summary-bar {
+    display: block;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    padding: 8px;
+  }
+
+  .app-title {
+    font-size: 1.05rem;
+  }
+
+  .panel {
+    padding: 8px;
+  }
+
+  .location-card {
+    padding: 7px;
+  }
+}
