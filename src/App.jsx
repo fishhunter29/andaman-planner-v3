@@ -1,15 +1,12 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { estimateCabLeg } from "./cabPricing";
 
-/**
- * Helper: safe numeric
- */
+/* -----------------------------
+   Helpers
+------------------------------ */
 const safeNum = (n) =>
   typeof n === "number" && Number.isFinite(n) ? n : 0;
 
-/**
- * Helper: format INR nicely
- */
 const formatINR = (value) =>
   new Intl.NumberFormat("en-IN", {
     style: "currency",
@@ -17,9 +14,6 @@ const formatINR = (value) =>
     maximumFractionDigits: 0,
   }).format(safeNum(value));
 
-/**
- * Helper: fetch JSON from /public/data
- */
 async function fetchJson(path) {
   const res = await fetch(path);
   if (!res.ok) {
@@ -28,9 +22,6 @@ async function fetchJson(path) {
   return res.json();
 }
 
-/**
- * Helper: compute nights from two yyyy-mm-dd strings
- */
 function computeNights(startDate, endDate) {
   if (!startDate || !endDate) return 0;
   const s = new Date(startDate);
@@ -41,8 +32,11 @@ function computeNights(startDate, endDate) {
   return diffDays > 0 ? Math.round(diffDays) : 0;
 }
 
+/* -----------------------------
+   Main App
+------------------------------ */
 function App() {
-  // ---------- DATA STATE ----------
+  // ---------- DATA ----------
   const [islands, setIslands] = useState([]);
   const [locations, setLocations] = useState([]);
   const [adventures, setAdventures] = useState([]);
@@ -67,23 +61,26 @@ function App() {
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
 
+  // ---------- STEP STATE ----------
+  // 1 = Basics, 2 = Locations, 3 = Cabs & Ferries, 4 = Hotels
+  const [activeStep, setActiveStep] = useState(1);
+
   // ---------- SELECTIONS ----------
   const [selectedMood, setSelectedMood] = useState("any");
-  const [selectedIslands, setSelectedIslands] = useState(["PB", "HL", "NL"]); // default PB → HL → NL
-  const [selectedLocationIds, setSelectedLocationIds] = useState([]); // simple set of location IDs
+  const [selectedIslands, setSelectedIslands] = useState(["PB", "HL", "NL"]);
+  const [selectedLocationIds, setSelectedLocationIds] = useState([]);
 
-  const [selectedAdventureIds, setSelectedAdventureIds] = useState({}); // map advId -> boolean
+  const [selectedAdventureIds, setSelectedAdventureIds] = useState({});
 
-  // Ferries: we store route IDs selected (user can auto-fill from islands)
   const [selectedFerryRouteIds, setSelectedFerryRouteIds] = useState([]);
 
-  // Cabs: list of { legId, timeOfDay, count }
   const [selectedCabLegs, setSelectedCabLegsState] = useState([]);
 
-  // Hotels: map islandId -> { hotelId, nights, rooms }
   const [selectedHotelsByIsland, setSelectedHotelsByIsland] = useState({});
 
-  // ---------- LOAD ALL PUBLIC DATA ----------
+  /* -----------------------------
+     LOAD PUBLIC DATA
+  ------------------------------ */
   useEffect(() => {
     let cancelled = false;
 
@@ -114,7 +111,6 @@ function App() {
             taxPercent: 0,
             serviceFee: 0,
           })),
-          // hotels might not exist yet → treat as []
           fetchJson(`${base}/hotel_prices.json`).catch(() => []),
         ]);
 
@@ -149,7 +145,9 @@ function App() {
     };
   }, []);
 
-  // ---------- DERIVED VALUES ----------
+  /* -----------------------------
+     DERIVED VALUES
+  ------------------------------ */
   const travellerCount = useMemo(
     () => Math.max(1, safeNum(adults) + safeNum(children)),
     [adults, children]
@@ -164,7 +162,7 @@ function App() {
     const overrideVal = parseInt(nightsOverride, 10);
     if (!Number.isNaN(overrideVal) && overrideVal > 0) return overrideVal;
     if (nightsFromDates > 0) return nightsFromDates;
-    return 4; // sensible default if user skips dates
+    return 4; // default if user skips dates
   }, [nightsOverride, nightsFromDates]);
 
   const islandById = useMemo(() => {
@@ -175,11 +173,18 @@ function App() {
     return map;
   }, [islands]);
 
-  // Filter locations by selected islands + mood
+  const moodOptions = [
+    { id: "any", label: "Any mood" },
+    { id: "family", label: "Family" },
+    { id: "romantic", label: "Romantic" },
+    { id: "adventure", label: "Adventure" },
+    { id: "offbeat", label: "Offbeat" },
+    { id: "nature", label: "Nature" },
+  ];
+
   const visibleLocations = useMemo(() => {
     if (!locations.length) return [];
     return locations.filter((loc) => {
-      // island filter
       const islandObj = islands.find((i) => loc.island?.includes(i.name));
       const islandIdGuess = islandObj?.id;
 
@@ -187,14 +192,12 @@ function App() {
         if (!selectedIslands.includes(islandIdGuess)) return false;
       }
 
-      // mood filter
       if (selectedMood === "any") return true;
       if (!loc.moods || !Array.isArray(loc.moods)) return false;
       return loc.moods.includes(selectedMood);
     });
   }, [locations, islands, selectedIslands, selectedMood]);
 
-  // Adventures grouped by island
   const adventuresByIsland = useMemo(() => {
     const map = {};
     adventures.forEach((adv) => {
@@ -206,27 +209,11 @@ function App() {
     return map;
   }, [adventures]);
 
-  // ---------- FERRY LOGIC ----------
-  const suggestedFerryRouteIds = useMemo(() => {
-    if (!ferryRoutes.length || !selectedIslands.length) return [];
-
-    const order = [...selectedIslands];
-
-    // Ensure PB at the start if it's included but not first
-    if (order.includes("PB") && order[0] !== "PB") {
-      const filtered = order.filter((id) => id !== "PB");
-      filtered.unshift("PB");
-      // optional: end at PB if user wants; for now we keep user order
-      // but we can add PB at end manually in UI if desired
-      return computeRouteIds(filtered, ferryRoutes);
-    }
-
-    return computeRouteIds(order, ferryRoutes);
-  }, [ferryRoutes, selectedIslands]);
-
+  /* -----------------------------
+     FERRY LOGIC
+  ------------------------------ */
   function computeRouteIds(islandOrder, routes) {
     const ids = [];
-
     for (let i = 0; i < islandOrder.length - 1; i += 1) {
       const fromId = islandOrder[i];
       const toId = islandOrder[i + 1];
@@ -243,9 +230,21 @@ function App() {
 
       if (r) ids.push(r.id);
     }
-
     return ids;
   }
+
+  const suggestedFerryRouteIds = useMemo(() => {
+    if (!ferryRoutes.length || !selectedIslands.length) return [];
+    const order = [...selectedIslands];
+
+    if (order.includes("PB") && order[0] !== "PB") {
+      const filtered = order.filter((id) => id !== "PB");
+      filtered.unshift("PB");
+      return computeRouteIds(filtered, ferryRoutes);
+    }
+
+    return computeRouteIds(order, ferryRoutes);
+  }, [ferryRoutes, selectedIslands]);
 
   function handleUseSuggestedFerries() {
     setSelectedFerryRouteIds(suggestedFerryRouteIds);
@@ -282,7 +281,9 @@ function App() {
     return total;
   }, [selectedFerryRouteIds, ferryRoutes, travellerCount]);
 
-  // ---------- CAB LOGIC ----------
+  /* -----------------------------
+     CAB LOGIC
+  ------------------------------ */
   const islandCabLegs = useMemo(() => {
     const map = {};
     cabLegs.forEach((leg) => {
@@ -338,7 +339,9 @@ function App() {
     return total;
   }, [selectedCabLegs, cabLegs, pricingConfig, travellerCount]);
 
-  // ---------- HOTEL LOGIC ----------
+  /* -----------------------------
+     HOTEL LOGIC
+  ------------------------------ */
   const hotelsByIsland = useMemo(() => {
     const map = {};
     (hotels || []).forEach((h) => {
@@ -396,7 +399,9 @@ function App() {
     return total;
   }, [selectedHotelsByIsland, hotelsByIsland]);
 
-  // ---------- ADVENTURES LOGIC ----------
+  /* -----------------------------
+     ADVENTURES LOGIC
+  ------------------------------ */
   function toggleAdventure(id) {
     setSelectedAdventureIds((prev) => ({
       ...prev,
@@ -420,7 +425,6 @@ function App() {
       } else if (unit === "per_trip" || unit === "per_boat") {
         total += base;
       } else {
-        // fallback: treat as per person
         total += base * travellerCount;
       }
     });
@@ -428,14 +432,18 @@ function App() {
     return total;
   }, [adventures, selectedAdventureIds, travellerCount]);
 
-  // ---------- LOCATIONS (no direct pricing yet) ----------
+  /* -----------------------------
+     LOCATIONS
+  ------------------------------ */
   function toggleLocation(id) {
     setSelectedLocationIds((prev) =>
       prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
     );
   }
 
-  // ---------- TOTALS ----------
+  /* -----------------------------
+     TOTALS
+  ------------------------------ */
   const baseSubtotal = cabTotal + ferryTotal + hotelTotal + adventureTotal;
   const taxAmount =
     safeNum(pricingConfig.taxPercent) > 0
@@ -444,14 +452,14 @@ function App() {
   const serviceFee = safeNum(pricingConfig.serviceFee);
   const grandTotal = baseSubtotal + taxAmount + serviceFee;
 
-  // ---------- SIMPLE HELPERS FOR UI ----------
-  const moodOptions = [
-    { id: "any", label: "Any mood" },
-    { id: "family", label: "Family" },
-    { id: "romantic", label: "Romantic" },
-    { id: "adventure", label: "Adventure" },
-    { id: "offbeat", label: "Offbeat" },
-    { id: "nature", label: "Nature" },
+  /* -----------------------------
+     STEP + ISLAND HELPERS
+  ------------------------------ */
+  const steps = [
+    { id: 1, label: "Basics" },
+    { id: 2, label: "Locations & activities" },
+    { id: 3, label: "Ferries & cabs" },
+    { id: 4, label: "Hotels" },
   ];
 
   function isIslandSelected(id) {
@@ -463,12 +471,13 @@ function App() {
       if (prev.includes(id)) {
         return prev.filter((x) => x !== id);
       }
-      // keep order by appending at end
       return [...prev, id];
     });
   }
 
-  // ---------- RENDER ----------
+  /* -----------------------------
+     LOADING / ERROR
+  ------------------------------ */
   if (loading) {
     return (
       <div className="app-root">
@@ -489,16 +498,19 @@ function App() {
     );
   }
 
+  /* -----------------------------
+     RENDER
+  ------------------------------ */
   return (
-    <div className="app-root">
-      {/* TOP HERO / BASIC CONTROLS */}
+    <div className="app-root app-root-dark">
+      {/* TOP HERO */}
       <header className="app-header">
-        <div>
-          <h1>Andaman Trip Planner (MVP)</h1>
+        <div className="app-header-main">
+          <h1>Andaman Trip Planner</h1>
           <p className="app-subtitle">
-            Select dates, islands, locations, adventures, ferries, cabs and
-            hotels. The summary bar will auto-calculate a realistic package
-            estimate in INR.
+            Option A: clean planner with right-hand live summary. Pick dates,
+            islands, locations, ferries, cabs and hotels – the estimate updates
+            in real time.
           </p>
         </div>
         <div className="hero-basics">
@@ -553,541 +565,614 @@ function App() {
         </div>
       </header>
 
-      {/* MAIN LAYOUT: LEFT = filters + islands, MIDDLE = locations/adventures, RIGHT = ferry/cab/hotel */}
-      <div className="app-layout">
-        {/* LEFT COLUMN */}
-        <section className="panel panel-left">
-          <h2>1. Islands & Mood</h2>
-          <p className="panel-hint">
-            Choose which islands to cover and your primary mood. Order of
-            islands influences suggested ferry legs.
-          </p>
+      {/* STEP BAR */}
+      <div className="step-bar">
+        {steps.map((step) => (
+          <button
+            key={step.id}
+            className={
+              "step-pill " +
+              (activeStep === step.id ? "step-pill-active" : "")
+            }
+            onClick={() => setActiveStep(step.id)}
+          >
+            <span className="step-number">{step.id}</span>
+            <span>{step.label}</span>
+          </button>
+        ))}
+      </div>
 
-          <div className="chip-row islands-row">
-            {islands.map((island) => (
-              <button
-                key={island.id}
-                className={
-                  "chip " + (isIslandSelected(island.id) ? "chip-active" : "")
-                }
-                onClick={() => toggleIsland(island.id)}
-              >
-                <span className="chip-title">{island.name}</span>
-                <span className="chip-sub">{island.region}</span>
-              </button>
-            ))}
-          </div>
+      {/* MAIN LAYOUT: LEFT CANVAS + RIGHT SUMMARY */}
+      <div className="app-shell">
+        <main className="main-column">
+          {/* STEP 1: BASICS + ISLANDS + MOOD */}
+          {activeStep === 1 && (
+            <section className="panel panel-main">
+              <h2>Step 1 – Islands & mood</h2>
+              <p className="panel-hint">
+                Choose which islands to cover and your primary mood. Order of
+                islands influences suggested ferry legs.
+              </p>
 
-          <div className="field-group">
-            <label>Trip mood</label>
-            <div className="chip-row">
-              {moodOptions.map((m) => (
-                <button
-                  key={m.id}
-                  className={
-                    "chip chip-small " +
-                    (selectedMood === m.id ? "chip-active" : "")
-                  }
-                  onClick={() => setSelectedMood(m.id)}
-                >
-                  {m.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="stats-box">
-            <p>
-              <strong>Trip length:</strong> {totalNights} nights
-            </p>
-            <p>
-              <strong>Selected islands:</strong>{" "}
-              {selectedIslands.length
-                ? selectedIslands
-                    .map((id) => islandById[id]?.name || id)
-                    .join(" → ")
-                : "None yet"}
-            </p>
-          </div>
-        </section>
-
-        {/* MIDDLE COLUMN */}
-        <section className="panel panel-middle">
-          <h2>2. Locations & Adventures</h2>
-          <p className="panel-hint">
-            Tick the places you definitely want to include. Adventures below are
-            automatically filtered by island.
-          </p>
-
-          <div className="locations-list">
-            {visibleLocations.map((loc) => {
-              const selected = selectedLocationIds.includes(loc.id);
-              const moods = loc.moods || [];
-              const islandObj = islands.find((i) =>
-                loc.island?.includes(i.name)
-              );
-              return (
-                <article
-                  key={loc.id}
-                  className={
-                    "card location-card " + (selected ? "card-selected" : "")
-                  }
-                >
-                  <header className="card-header">
-                    <div>
-                      <h3>{loc.location}</h3>
-                      <p className="card-sub">
-                        {loc.category} • {loc.island}
-                      </p>
-                    </div>
-                    <button
-                      className="btn btn-outline"
-                      onClick={() => toggleLocation(loc.id)}
-                    >
-                      {selected ? "Remove" : "Add to trip"}
-                    </button>
-                  </header>
-                  <p className="card-brief">{loc.brief}</p>
-                  <footer className="card-footer">
-                    <span className="pill">
-                      ~{loc.typicalHours || 2} hours
-                    </span>
-                    {islandObj && (
-                      <span className="pill pill-soft">{islandObj.name}</span>
-                    )}
-                    {moods.map((m) => (
-                      <span key={m} className="pill pill-soft">
-                        {m}
-                      </span>
-                    ))}
-                  </footer>
-                </article>
-              );
-            })}
-
-            {!visibleLocations.length && (
-              <div className="empty-state">
-                No locations match this mood + island selection yet.
-              </div>
-            )}
-          </div>
-
-          {/* Adventures */}
-          <div className="adventures-section">
-            <h3>Featured adventures (priced)</h3>
-            <p className="panel-hint">
-              Based on your chosen islands. Tick activities to include; pricing
-              will factor in number of travellers.
-            </p>
-
-            {selectedIslands.map((islandId) => {
-              const list = adventuresByIsland[islandId] || [];
-              if (!list.length) return null;
-              const islandName = islandById[islandId]?.name || islandId;
-
-              return (
-                <div key={islandId} className="adventure-island-block">
-                  <h4>{islandName}</h4>
-                  <div className="adventures-list">
-                    {list.map((adv) => {
-                      const checked = !!selectedAdventureIds[adv.id];
-                      return (
-                        <label
-                          key={adv.id}
-                          className={
-                            "card adventure-card " +
-                            (checked ? "card-selected" : "")
-                          }
-                        >
-                          <div className="card-header">
-                            <div>
-                              <h5>{adv.name}</h5>
-                              <p className="card-sub">
-                                {adv.category} • {adv.unit || "per_person"}
-                              </p>
-                            </div>
-                            <div className="price-tag">
-                              {formatINR(adv.basePriceINR)}
-                            </div>
-                          </div>
-                          <p className="card-brief">{adv.description}</p>
-                          <div className="card-footer adventure-footer">
-                            <span className="pill">
-                              ~{adv.durationMin || 120} min
-                            </span>
-                            {adv.season && (
-                              <span className="pill pill-soft">
-                                Season: {adv.season}
-                              </span>
-                            )}
-                            <input
-                              type="checkbox"
-                              checked={checked}
-                              onChange={() => toggleAdventure(adv.id)}
-                            />
-                            <span className="check-label">Add to trip</span>
-                          </div>
-                        </label>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            })}
-
-            {!selectedIslands.some((id) => adventuresByIsland[id]?.length) && (
-              <div className="empty-state">
-                No mapped adventures for current islands yet. (Data can be
-                expanded later.)
-              </div>
-            )}
-          </div>
-        </section>
-
-        {/* RIGHT COLUMN */}
-        <section className="panel panel-right">
-          {/* FERRIES */}
-          <div className="block">
-            <h2>3. Ferries (island hopping)</h2>
-            <p className="panel-hint">
-              Use suggested sectors based on island order, then tweak manually.
-              Pricing uses the cheapest private operator fare per person.
-            </p>
-
-            <button
-              className="btn btn-primary btn-small"
-              onClick={handleUseSuggestedFerries}
-              disabled={!suggestedFerryRouteIds.length}
-            >
-              Use suggested route
-            </button>
-
-            <div className="ferry-list">
-              {ferryRoutes.map((route) => {
-                const selected = selectedFerryRouteIds.includes(route.id);
-                const fromName =
-                  Object.values(islandById).find(
-                    (i) => i.id === route.originId
-                  )?.name || route.from;
-                const toName =
-                  Object.values(islandById).find(
-                    (i) => i.id === route.destinationId
-                  )?.name || route.to;
-                const perPerson = getFerryMinFarePerPerson(route);
-                const perTrip = perPerson * travellerCount;
-
-                return (
-                  <label
-                    key={route.id}
+              <h3>Islands</h3>
+              <div className="chip-row islands-row">
+                {islands.map((island) => (
+                  <button
+                    key={island.id}
                     className={
-                      "card ferry-card " + (selected ? "card-selected" : "")
+                      "chip " +
+                      (isIslandSelected(island.id) ? "chip-active" : "")
                     }
+                    onClick={() => toggleIsland(island.id)}
                   >
-                    <div className="card-header">
-                      <div>
-                        <h3>
-                          {fromName} → {toName}
-                        </h3>
-                        <p className="card-sub">
-                          ~{route.typicalDurationMin} min •{" "}
-                          {(route.operators || [])
-                            .map((op) => op.operator)
-                            .join(", ")}
-                        </p>
-                      </div>
-                      <div className="price-tag">
-                        {perPerson
-                          ? `${formatINR(perPerson)} /person`
-                          : "Govt ferry / TBD"}
-                      </div>
-                    </div>
-                    <div className="card-footer">
-                      <span className="pill">
-                        Total (for {travellerCount}) : {formatINR(perTrip)}
-                      </span>
-                      <div className="right">
-                        <input
-                          type="checkbox"
-                          checked={selected}
-                          onChange={() => toggleFerryRoute(route.id)}
-                        />
-                        <span className="check-label">Include</span>
-                      </div>
-                    </div>
-                  </label>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* CABS */}
-          <div className="block">
-            <h2>4. Point-to-point cabs</h2>
-            <p className="panel-hint">
-              These are true legs from your cab_legs.json. Select an island,
-              then add legs like Airport → Hotel, Hotel → Sightseeing, etc.
-              Pricing looks at day/night fares and group size.
-            </p>
-
-            {selectedIslands.map((islandId) => {
-              const legs = islandCabLegs[islandId] || [];
-              if (!legs.length) return null;
-              const islandName = islandById[islandId]?.name || islandId;
-
-              // Build a label map for dropdown
-              const options = legs.map((leg) => ({
-                id: leg.id,
-                label: `${leg.fromZone} → ${leg.toZone} • ${leg.vehicleClass} • ${
-                  leg.tripType
-                }`,
-              }));
-
-              return (
-                <div key={islandId} className="cab-island-block">
-                  <h3>{islandName}</h3>
-                  <div className="field-row">
-                    <select
-                      defaultValue=""
-                      onChange={(e) => {
-                        const id = e.target.value;
-                        if (!id) return;
-                        addCabLeg(id, "day");
-                        e.target.value = "";
-                      }}
-                    >
-                      <option value="">Add cab leg…</option>
-                      {options.map((opt) => (
-                        <option key={opt.id} value={opt.id}>
-                          {opt.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-              );
-            })}
-
-            {!selectedIslands.some((id) => islandCabLegs[id]?.length) && (
-              <div className="empty-state">
-                No cab legs mapped yet for the selected islands. (Data can be
-                extended.)
+                    <span className="chip-title">{island.name}</span>
+                    <span className="chip-sub">{island.region}</span>
+                  </button>
+                ))}
               </div>
-            )}
 
-            {selectedCabLegs.length > 0 && (
-              <div className="cab-selection-list">
-                <h4>Selected cab legs</h4>
-                {selectedCabLegs.map((sel, index) => {
-                  const leg = cabLegs.find((l) => l.id === sel.legId);
-                  if (!leg) return null;
-                  const info = estimateCabLeg(leg, pricingConfig, {
-                    timeOfDay: sel.timeOfDay || "day",
-                    travellers: travellerCount,
-                  });
-                  const perVehicle = safeNum(info.perVehicle);
-                  const count = sel.count || 1;
-                  const lineTotal = perVehicle * count;
+              <div className="field-group">
+                <label>Trip mood</label>
+                <div className="chip-row">
+                  {moodOptions.map((m) => (
+                    <button
+                      key={m.id}
+                      className={
+                        "chip chip-small " +
+                        (selectedMood === m.id ? "chip-active" : "")
+                      }
+                      onClick={() => setSelectedMood(m.id)}
+                    >
+                      {m.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
+              <div className="stats-box">
+                <p>
+                  <strong>Trip length:</strong> {totalNights} nights
+                </p>
+                <p>
+                  <strong>Selected islands:</strong>{" "}
+                  {selectedIslands.length
+                    ? selectedIslands
+                        .map((id) => islandById[id]?.name || id)
+                        .join(" → ")
+                    : "None yet"}
+                </p>
+              </div>
+            </section>
+          )}
+
+          {/* STEP 2: LOCATIONS & ADVENTURES */}
+          {activeStep === 2 && (
+            <section className="panel panel-main">
+              <h2>Step 2 – Locations & activities</h2>
+              <p className="panel-hint">
+                Select the places you want to visit. Adventures below are
+                filtered by island and priced per person or per trip.
+              </p>
+
+              <div className="locations-list">
+                {visibleLocations.map((loc) => {
+                  const selected = selectedLocationIds.includes(loc.id);
+                  const moods = loc.moods || [];
+                  const islandObj = islands.find((i) =>
+                    loc.island?.includes(i.name)
+                  );
                   return (
-                    <div key={index} className="cab-line">
-                      <div className="cab-line-main">
+                    <article
+                      key={loc.id}
+                      className={
+                        "card location-card " +
+                        (selected ? "card-selected" : "")
+                      }
+                    >
+                      <header className="card-header">
                         <div>
-                          <div className="cab-title">
-                            {leg.fromZone} → {leg.toZone}
-                          </div>
-                          <div className="cab-sub">
-                            {leg.vehicleClass} • {leg.tripType} • Included wait{" "}
-                            {leg.includedWaitMin} min
-                          </div>
-                        </div>
-                        <div className="cab-price">
-                          {formatINR(perVehicle)} × {count} ={" "}
-                          {formatINR(lineTotal)}
-                        </div>
-                      </div>
-                      <div className="cab-line-controls">
-                        <div className="field-group-inline">
-                          <label>Time</label>
-                          <select
-                            value={sel.timeOfDay || "day"}
-                            onChange={(e) =>
-                              updateCabLegTimeOfDay(index, e.target.value)
-                            }
-                          >
-                            <option value="day">Day</option>
-                            <option value="night">Night</option>
-                          </select>
-                        </div>
-                        <div className="field-group-inline">
-                          <label>Count</label>
-                          <div className="stepper">
-                            <button
-                              type="button"
-                              onClick={() => updateCabLegCount(index, -1)}
-                            >
-                              -
-                            </button>
-                            <span>{count}</span>
-                            <button
-                              type="button"
-                              onClick={() => updateCabLegCount(index, 1)}
-                            >
-                              +
-                            </button>
-                          </div>
+                          <h3>{loc.location}</h3>
+                          <p className="card-sub">
+                            {loc.category} • {loc.island}
+                          </p>
                         </div>
                         <button
-                          className="btn btn-ghost"
-                          type="button"
-                          onClick={() => removeCabLeg(index)}
+                          className="btn btn-outline"
+                          onClick={() => toggleLocation(loc.id)}
                         >
-                          Remove
+                          {selected ? "Remove" : "Add to trip"}
                         </button>
+                      </header>
+                      <p className="card-brief">{loc.brief}</p>
+                      <footer className="card-footer">
+                        <span className="pill">
+                          ~{loc.typicalHours || 2} hours
+                        </span>
+                        {islandObj && (
+                          <span className="pill pill-soft">
+                            {islandObj.name}
+                          </span>
+                        )}
+                        {moods.map((m) => (
+                          <span key={m} className="pill pill-soft">
+                            {m}
+                          </span>
+                        ))}
+                      </footer>
+                    </article>
+                  );
+                })}
+
+                {!visibleLocations.length && (
+                  <div className="empty-state">
+                    No locations match this mood + island selection yet.
+                  </div>
+                )}
+              </div>
+
+              <div className="adventures-section">
+                <h3>Adventures (priced)</h3>
+                <p className="panel-hint">
+                  Tick activities to include; pricing will factor in number of
+                  travellers.
+                </p>
+
+                {selectedIslands.map((islandId) => {
+                  const list = adventuresByIsland[islandId] || [];
+                  if (!list.length) return null;
+                  const islandName = islandById[islandId]?.name || islandId;
+
+                  return (
+                    <div key={islandId} className="adventure-island-block">
+                      <h4>{islandName}</h4>
+                      <div className="adventures-list">
+                        {list.map((adv) => {
+                          const checked = !!selectedAdventureIds[adv.id];
+                          return (
+                            <label
+                              key={adv.id}
+                              className={
+                                "card adventure-card " +
+                                (checked ? "card-selected" : "")
+                              }
+                            >
+                              <div className="card-header">
+                                <div>
+                                  <h5>{adv.name}</h5>
+                                  <p className="card-sub">
+                                    {adv.category} • {adv.unit || "per_person"}
+                                  </p>
+                                </div>
+                                <div className="price-tag">
+                                  {formatINR(adv.basePriceINR)}
+                                </div>
+                              </div>
+                              <p className="card-brief">
+                                {adv.description}
+                              </p>
+                              <div className="card-footer adventure-footer">
+                                <span className="pill">
+                                  ~{adv.durationMin || 120} min
+                                </span>
+                                {adv.season && (
+                                  <span className="pill pill-soft">
+                                    Season: {adv.season}
+                                  </span>
+                                )}
+                                <input
+                                  type="checkbox"
+                                  checked={checked}
+                                  onChange={() => toggleAdventure(adv.id)}
+                                />
+                                <span className="check-label">
+                                  Add to trip
+                                </span>
+                              </div>
+                            </label>
+                          );
+                        })}
                       </div>
                     </div>
                   );
                 })}
+
+                {!selectedIslands.some(
+                  (id) => adventuresByIsland[id]?.length
+                ) && (
+                  <div className="empty-state">
+                    No mapped adventures for current islands yet.
+                  </div>
+                )}
               </div>
-            )}
-          </div>
+            </section>
+          )}
 
-          {/* HOTELS */}
-          <div className="block">
-            <h2>5. Hotels by island</h2>
-            <p className="panel-hint">
-              For each island, pick a sample hotel and adjust nights/rooms.
-            </p>
+          {/* STEP 3: FERRIES & CABS */}
+          {activeStep === 3 && (
+            <section className="panel panel-main">
+              <h2>Step 3 – Ferries & point-to-point cabs</h2>
+              <p className="panel-hint">
+                Use suggested ferry sectors based on island order, then add cab
+                legs like Airport → Hotel, Hotel → Sightseeing, etc.
+              </p>
 
-            {selectedIslands.map((islandId) => {
-              const list = hotelsByIsland[islandId] || [];
-              const islandName = islandById[islandId]?.name || islandId;
-              const sel = selectedHotelsByIsland[islandId];
+              {/* Ferries */}
+              <div className="block">
+                <div className="block-header">
+                  <h3>Ferries</h3>
+                  <button
+                    className="btn btn-primary btn-small"
+                    onClick={handleUseSuggestedFerries}
+                    disabled={!suggestedFerryRouteIds.length}
+                  >
+                    Use suggested route
+                  </button>
+                </div>
 
-              return (
-                <div key={islandId} className="hotel-island-block">
-                  <h3>{islandName}</h3>
-                  {list.length ? (
-                    <>
-                      <select
-                        value={sel?.hotelId || ""}
-                        onChange={(e) =>
-                          handleSelectHotel(islandId, e.target.value)
+                <div className="ferry-list">
+                  {ferryRoutes.map((route) => {
+                    const selected =
+                      selectedFerryRouteIds.includes(route.id);
+                    const fromName =
+                      islandById[route.originId]?.name || route.from;
+                    const toName =
+                      islandById[route.destinationId]?.name || route.to;
+                    const perPerson = getFerryMinFarePerPerson(route);
+                    const perTrip = perPerson * travellerCount;
+
+                    return (
+                      <label
+                        key={route.id}
+                        className={
+                          "card ferry-card " +
+                          (selected ? "card-selected" : "")
                         }
                       >
-                        <option value="">Select a hotel…</option>
-                        {list.map((h) => (
-                          <option key={h.id} value={h.id}>
-                            {h.displayName || h.name} •{" "}
-                            {formatINR(h.basePricePerNightINR)} /night
-                          </option>
-                        ))}
-                      </select>
-
-                      {sel && (
-                        <div className="hotel-controls">
-                          <div className="field-group-inline">
-                            <label>Nights</label>
-                            <div className="stepper">
-                              <button
-                                type="button"
-                                onClick={() => updateHotelNights(islandId, -1)}
-                              >
-                                -
-                              </button>
-                              <span>{sel.nights || 1}</span>
-                              <button
-                                type="button"
-                                onClick={() => updateHotelNights(islandId, 1)}
-                              >
-                                +
-                              </button>
-                            </div>
+                        <div className="card-header">
+                          <div>
+                            <h4>
+                              {fromName} → {toName}
+                            </h4>
+                            <p className="card-sub">
+                              ~{route.typicalDurationMin} min •{" "}
+                              {(route.operators || [])
+                                .map((op) => op.operator)
+                                .join(", ")}
+                            </p>
                           </div>
-                          <div className="field-group-inline">
-                            <label>Rooms</label>
-                            <div className="stepper">
-                              <button
-                                type="button"
-                                onClick={() => updateHotelRooms(islandId, -1)}
-                              >
-                                -
-                              </button>
-                              <span>{sel.rooms || 1}</span>
-                              <button
-                                type="button"
-                                onClick={() => updateHotelRooms(islandId, 1)}
-                              >
-                                +
-                              </button>
-                            </div>
+                          <div className="price-tag">
+                            {perPerson
+                              ? `${formatINR(perPerson)} /person`
+                              : "Govt ferry / TBD"}
                           </div>
                         </div>
-                      )}
-                    </>
-                  ) : (
-                    <div className="empty-state small">
-                      No hotel sample data yet for this island.
-                    </div>
-                  )}
+                        <div className="card-footer">
+                          <span className="pill">
+                            Total (for {travellerCount}) :{" "}
+                            {formatINR(perTrip)}
+                          </span>
+                          <div className="right">
+                            <input
+                              type="checkbox"
+                              checked={selected}
+                              onChange={() => toggleFerryRoute(route.id)}
+                            />
+                            <span className="check-label">Include</span>
+                          </div>
+                        </div>
+                      </label>
+                    );
+                  })}
                 </div>
-              );
-            })}
-          </div>
-        </section>
-      </div>
+              </div>
 
-      {/* SUMMARY BAR (MOBILE STICKY + DESKTOP FOOTER) */}
-      <footer className="summary-bar">
-        <div className="summary-block">
-          <h3>Trip summary</h3>
-          <p>
-            {totalNights} nights • {travellerCount} travellers •{" "}
-            {selectedIslands.length
-              ? selectedIslands
-                  .map((id) => islandById[id]?.name || id)
-                  .join(" → ")
-              : "No islands selected yet"}
-          </p>
-        </div>
-        <div className="summary-prices">
-          <div className="summary-line">
-            <span>Hotels</span>
-            <span>{formatINR(hotelTotal)}</span>
-          </div>
-          <div className="summary-line">
-            <span>Cabs (point-to-point)</span>
-            <span>{formatINR(cabTotal)}</span>
-          </div>
-          <div className="summary-line">
-            <span>Ferries</span>
-            <span>{formatINR(ferryTotal)}</span>
-          </div>
-          <div className="summary-line">
-            <span>Adventures</span>
-            <span>{formatINR(adventureTotal)}</span>
-          </div>
-          {taxAmount > 0 && (
-            <div className="summary-line">
-              <span>Tax ({pricingConfig.taxPercent}%)</span>
-              <span>{formatINR(taxAmount)}</span>
-            </div>
+              {/* Cabs */}
+              <div className="block">
+                <h3>Cabs – point-to-point</h3>
+                <p className="panel-hint">
+                  For each island, add legs from cab_legs.json (e.g. Airport →
+                  Hotel). You can adjust day/night and number of times.
+                </p>
+
+                {selectedIslands.map((islandId) => {
+                  const legs = islandCabLegs[islandId] || [];
+                  if (!legs.length) return null;
+                  const islandName =
+                    islandById[islandId]?.name || islandId;
+
+                  const options = legs.map((leg) => ({
+                    id: leg.id,
+                    label: `${leg.fromZone} → ${leg.toZone} • ${leg.vehicleClass} • ${leg.tripType}`,
+                  }));
+
+                  return (
+                    <div key={islandId} className="cab-island-block">
+                      <h4>{islandName}</h4>
+                      <div className="field-row">
+                        <select
+                          defaultValue=""
+                          onChange={(e) => {
+                            const id = e.target.value;
+                            if (!id) return;
+                            addCabLeg(id, "day");
+                            e.target.value = "";
+                          }}
+                        >
+                          <option value="">Add cab leg…</option>
+                          {options.map((opt) => (
+                            <option key={opt.id} value={opt.id}>
+                              {opt.label}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                  );
+                })}
+
+                {!selectedIslands.some(
+                  (id) => islandCabLegs[id]?.length
+                ) && (
+                  <div className="empty-state">
+                    No cab legs mapped yet for selected islands.
+                  </div>
+                )}
+
+                {selectedCabLegs.length > 0 && (
+                  <div className="cab-selection-list">
+                    <h4>Selected cab legs</h4>
+                    {selectedCabLegs.map((sel, index) => {
+                      const leg = cabLegs.find(
+                        (l) => l.id === sel.legId
+                      );
+                      if (!leg) return null;
+                      const info = estimateCabLeg(leg, pricingConfig, {
+                        timeOfDay: sel.timeOfDay || "day",
+                        travellers: travellerCount,
+                      });
+                      const perVehicle = safeNum(info.perVehicle);
+                      const count = sel.count || 1;
+                      const lineTotal = perVehicle * count;
+
+                      return (
+                        <div key={index} className="cab-line">
+                          <div className="cab-line-main">
+                            <div>
+                              <div className="cab-title">
+                                {leg.fromZone} → {leg.toZone}
+                              </div>
+                              <div className="cab-sub">
+                                {leg.vehicleClass} • {leg.tripType} •
+                                Wait {leg.includedWaitMin} min
+                              </div>
+                            </div>
+                            <div className="cab-price">
+                              {formatINR(perVehicle)} × {count} ={" "}
+                              {formatINR(lineTotal)}
+                            </div>
+                          </div>
+                          <div className="cab-line-controls">
+                            <div className="field-group-inline">
+                              <label>Time</label>
+                              <select
+                                value={sel.timeOfDay || "day"}
+                                onChange={(e) =>
+                                  updateCabLegTimeOfDay(
+                                    index,
+                                    e.target.value
+                                  )
+                                }
+                              >
+                                <option value="day">Day</option>
+                                <option value="night">Night</option>
+                              </select>
+                            </div>
+                            <div className="field-group-inline">
+                              <label>Count</label>
+                              <div className="stepper">
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    updateCabLegCount(index, -1)
+                                  }
+                                >
+                                  -
+                                </button>
+                                <span>{count}</span>
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    updateCabLegCount(index, 1)
+                                  }
+                                >
+                                  +
+                                </button>
+                              </div>
+                            </div>
+                            <button
+                              className="btn btn-ghost"
+                              type="button"
+                              onClick={() => removeCabLeg(index)}
+                            >
+                              Remove
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            </section>
           )}
-          {serviceFee > 0 && (
-            <div className="summary-line">
-              <span>Service fee</span>
-              <span>{formatINR(serviceFee)}</span>
-            </div>
+
+          {/* STEP 4: HOTELS */}
+          {activeStep === 4 && (
+            <section className="panel panel-main">
+              <h2>Step 4 – Hotels</h2>
+              <p className="panel-hint">
+                For each island, pick a sample hotel and adjust nights/rooms.
+                Totals feed directly into the summary panel.
+              </p>
+
+              {selectedIslands.map((islandId) => {
+                const list = hotelsByIsland[islandId] || [];
+                const islandName = islandById[islandId]?.name || islandId;
+                const sel = selectedHotelsByIsland[islandId];
+
+                return (
+                  <div key={islandId} className="hotel-island-block">
+                    <h3>{islandName}</h3>
+                    {list.length ? (
+                      <>
+                        <select
+                          value={sel?.hotelId || ""}
+                          onChange={(e) =>
+                            handleSelectHotel(islandId, e.target.value)
+                          }
+                        >
+                          <option value="">Select a hotel…</option>
+                          {list.map((h) => (
+                            <option key={h.id} value={h.id}>
+                              {h.displayName || h.name} •{" "}
+                              {formatINR(h.basePricePerNightINR)} /night
+                            </option>
+                          ))}
+                        </select>
+
+                        {sel && (
+                          <div className="hotel-controls">
+                            <div className="field-group-inline">
+                              <label>Nights</label>
+                              <div className="stepper">
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    updateHotelNights(islandId, -1)
+                                  }
+                                >
+                                  -
+                                </button>
+                                <span>{sel.nights || 1}</span>
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    updateHotelNights(islandId, 1)
+                                  }
+                                >
+                                  +
+                                </button>
+                              </div>
+                            </div>
+                            <div className="field-group-inline">
+                              <label>Rooms</label>
+                              <div className="stepper">
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    updateHotelRooms(islandId, -1)
+                                  }
+                                >
+                                  -
+                                </button>
+                                <span>{sel.rooms || 1}</span>
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    updateHotelRooms(islandId, 1)
+                                  }
+                                >
+                                  +
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      <div className="empty-state small">
+                        No hotel sample data yet for this island.
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </section>
           )}
-          <div className="summary-total">
-            <span>Estimated package total</span>
-            <span>{formatINR(grandTotal)}</span>
+        </main>
+
+        {/* RIGHT SUMMARY PANEL (Option A) */}
+        <aside className="summary-column">
+          <div className="summary-card">
+            <h2>Trip summary</h2>
+            <p className="summary-sub">
+              {totalNights} nights • {travellerCount} travellers
+            </p>
+            <p className="summary-sub">
+              {selectedIslands.length
+                ? selectedIslands
+                    .map((id) => islandById[id]?.name || id)
+                    .join(" → ")
+                : "No islands selected yet"}
+            </p>
+
+            <div className="summary-divider" />
+
+            <div className="summary-lines">
+              <div className="summary-line">
+                <span>Hotels</span>
+                <span>{formatINR(hotelTotal)}</span>
+              </div>
+              <div className="summary-line">
+                <span>Cabs</span>
+                <span>{formatINR(cabTotal)}</span>
+              </div>
+              <div className="summary-line">
+                <span>Ferries</span>
+                <span>{formatINR(ferryTotal)}</span>
+              </div>
+              <div className="summary-line">
+                <span>Adventures</span>
+                <span>{formatINR(adventureTotal)}</span>
+              </div>
+              {taxAmount > 0 && (
+                <div className="summary-line">
+                  <span>Tax ({pricingConfig.taxPercent}%)</span>
+                  <span>{formatINR(taxAmount)}</span>
+                </div>
+              )}
+              {serviceFee > 0 && (
+                <div className="summary-line">
+                  <span>Service fee</span>
+                  <span>{formatINR(serviceFee)}</span>
+                </div>
+              )}
+            </div>
+
+            <div className="summary-divider" />
+
+            <div className="summary-total">
+              <span>Estimated package total</span>
+              <span>{formatINR(grandTotal)}</span>
+            </div>
+
+            <div className="summary-actions">
+              <button className="btn btn-primary btn-full">
+                Request detailed quote
+              </button>
+              <button className="btn btn-outline btn-full">
+                Download breakdown (future)
+              </button>
+            </div>
+
+            <p className="summary-footnote">
+              All prices are sample estimates, meant for internal planning and
+              vendor calibration. Final quote will be generated from the
+              backend.
+            </p>
           </div>
-        </div>
-        <div className="summary-actions">
-          <button className="btn btn-primary">Request quote</button>
-          <button className="btn btn-outline">Download breakdown (future)</button>
-        </div>
-      </footer>
+        </aside>
+      </div>
     </div>
   );
 }
