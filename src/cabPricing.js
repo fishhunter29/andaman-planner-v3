@@ -1,39 +1,59 @@
 // src/cabPricing.js
 
-// Small focused helpers for cab_legs.json pricing logic.
+/**
+ * Safely coerce to number
+ */
+const num = (v) => (typeof v === "number" && Number.isFinite(v) ? v : Number(v) || 0);
 
-// MAIN: compute the fare for one cab leg
-export function estimateCabLegFare(leg, opts = {}) {
-  if (!leg) return 0;
-
-  const time = opts.timeOfDay || "day"; // "day" | "night"
-
-  const day = Number(leg.dayFareINR || 0);
-  const night = Number(leg.nightFareINR || 0);
-
-  if (time === "night") {
-    return night > 0 ? night : day;
+/**
+ * Estimate a single cab leg fare.
+ *
+ * - Uses leg.dayFareINR / leg.nightFareINR directly from cab_legs.json
+ * - Optionally applies a global multiplier from pricing_config.json (minCabFareMultiplier)
+ * - Returns per-vehicle and per-person fares
+ */
+export function estimateCabLeg(leg, pricingConfig = {}, options = {}) {
+  if (!leg) {
+    return { perVehicle: 0, perPerson: 0 };
   }
-  return day;
+
+  const timeOfDay = options.timeOfDay === "night" ? "night" : "day";
+  const travellers = Math.max(1, num(options.travellers) || 1);
+
+  const baseDay = num(leg.dayFareINR);
+  const baseNight = num(leg.nightFareINR) || baseDay;
+
+  // Choose base fare
+  const base = timeOfDay === "night" ? baseNight : baseDay;
+
+  // Optional global multiplier from pricing_config.json (if you add it later)
+  const minCabFareMultiplier = num(pricingConfig.minCabFareMultiplier) || 1;
+
+  const perVehicle = base * minCabFareMultiplier;
+  const perPerson = perVehicle / travellers;
+
+  return {
+    perVehicle,
+    perPerson,
+  };
 }
 
-// Group legs by island for dropdown UI convenience
-export function groupCabLegsByIsland(cabLegs = []) {
-  const out = {};
-  for (const leg of cabLegs) {
-    const key = leg.islandId || "UNKNOWN";
-    if (!out[key]) out[key] = [];
-    out[key].push(leg);
-  }
-  return out;
-}
+/**
+ * (Optional helper) Find a cab leg that matches some criteria
+ * Example usage: findMatchingCabLeg(cabLegs, { islandId: "PB", fromZone: "PB_AIRPORT", toZone: "PB_TOWN" })
+ */
+export function findMatchingCabLeg(cabLegs, criteria = {}) {
+  if (!Array.isArray(cabLegs) || !cabLegs.length) return null;
 
-// Format for UI labels
-export function formatCabLegLabel(leg) {
-  if (!leg) return "";
-  const from = leg.fromZone || leg.from || "?";
-  const to = leg.toZone || leg.to || "?";
-  const tripType = leg.tripType || "";
-  const vehicle = leg.vehicleClass || "";
-  return `${from} → ${to} (${tripType}, ${vehicle})`;
+  return (
+    cabLegs.find((leg) => {
+      if (criteria.id && leg.id !== criteria.id) return false;
+      if (criteria.islandId && leg.islandId !== criteria.islandId) return false;
+      if (criteria.fromZone && leg.fromZone !== criteria.fromZone) return false;
+      if (criteria.toZone && leg.toZone !== criteria.toZone) return false;
+      if (criteria.vehicleClass && leg.vehicleClass !== criteria.vehicleClass) return false;
+      if (criteria.tripType && leg.tripType !== criteria.tripType) return false;
+      return true;
+    }) || null
+  );
 }
