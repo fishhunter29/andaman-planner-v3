@@ -1,0 +1,1530 @@
+[
+  {
+    "id": "ADV001",
+    "name": "Alfred Caves Seasonal Trek",
+    "slug": "alfred-caves-seasonal-trek",
+    "category": "trek",
+    "description": "Seasonal hike to limestone cave clusters near Diglipur.",
+    "durationMin": 240,
+    "ageMin": 12,
+    "operatedIn": [
+      "DG"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 1800.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Trekking shoes",
+      "Headlamp"
+    ],
+    "safetyNotes": "Seasonal access only.",
+    "season": "Jan-Mar",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV002",
+    "name": "Banana Boat Ride",
+    "slug": "banana-boat-ride",
+    "category": "adrenaline",
+    "description": "Standard group banana boat activity.",
+    "durationMin": 15,
+    "ageMin": null,
+    "operatedIn": [],
+    "unit": "per_person",
+    "basePriceINR": 1000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [],
+    "safetyNotes": "",
+    "season": "",
+    "difficulty": ""
+  },
+  {
+    "id": "ADV003",
+    "name": "Baratang Mangrove Boat + Caves",
+    "slug": "baratang-mangrove-boat-caves",
+    "category": "adventure",
+    "description": "Mangrove speedboat and limestone caves visit with local guide.",
+    "durationMin": 300,
+    "ageMin": 6,
+    "operatedIn": [
+      "BT"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 1800.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Boat tickets",
+      "Guide"
+    ],
+    "safetyNotes": "Trunk Road timings/permits apply.",
+    "season": "Nov-Apr",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV004",
+    "name": "Barren Island Expedition Dive (Certified)",
+    "slug": "barren-island-expedition-dive",
+    "category": "dive",
+    "description": "Long-range boat to offshore volcano; multiple advanced dives.",
+    "durationMin": 600,
+    "ageMin": 15,
+    "operatedIn": [
+      "RX"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 25000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Scuba kit",
+      "Safety gear"
+    ],
+    "safetyNotes": "Weather/permits; advanced divers only; 24h no-fly.",
+    "season": "Jan-Apr",
+    "difficulty": "challenging"
+  },
+  {
+    "id": "ADV005",
+    "name": "Bioluminescence Beach Walk (No Kayak)",
+    "slug": "bioluminescence-beach-walk",
+    "category": "nature",
+    "description": "Guided shoreline walk to witness bioluminescence on suitable nights.",
+    "durationMin": 60,
+    "ageMin": 5,
+    "operatedIn": [
+      "HL"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 1500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Torch (red light)"
+    ],
+    "safetyNotes": "Moon/tide dependent; avoid light pollution.",
+    "season": "Nov-Mar",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV006",
+    "name": "Bioluminescence Kayaking (Night)",
+    "slug": "bioluminescence-kayaking-night",
+    "category": "adventure",
+    "description": "Night kayak to see bioluminescence (when conditions permit).",
+    "durationMin": 120,
+    "ageMin": 6,
+    "operatedIn": [
+      "HL",
+      "PB"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 3500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Kayak",
+      "Paddle",
+      "PFD"
+    ],
+    "safetyNotes": "Moon/tide dependent; follow guide instructions.",
+    "season": "Nov-Mar",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV007",
+    "name": "Birding - Chidiya Tapu Sunrise",
+    "slug": "birding-chidiya-tapu-sunrise",
+    "category": "nature",
+    "description": "Sunrise birding session around Sippighat & Chidiya Tapu.",
+    "durationMin": 150,
+    "ageMin": 6,
+    "operatedIn": [
+      "PB"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 900.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Binoculars (provided)",
+      "Field guide"
+    ],
+    "safetyNotes": "Best season Nov-Mar.",
+    "season": "Nov-Mar",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV008",
+    "name": "Birding Walk - Sippighat Wetlands",
+    "slug": "birding-walk-sippighat",
+    "category": "nature",
+    "description": "Leisure birding in paddy fields & wetlands with guide.",
+    "durationMin": 120,
+    "ageMin": 6,
+    "operatedIn": [
+      "PB"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 900.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Binoculars (provided)",
+      "Water"
+    ],
+    "safetyNotes": "Best early morning; season Nov-Mar.",
+    "season": "Nov-Mar",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV009",
+    "name": "Camping",
+    "slug": "camping",
+    "category": "adventure",
+    "description": "Overnight stay on serene beaches.",
+    "durationMin": null,
+    "ageMin": null,
+    "operatedIn": [],
+    "unit": "per_person",
+    "basePriceINR": 2500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [],
+    "safetyNotes": "",
+    "season": "",
+    "difficulty": ""
+  },
+  {
+    "id": "ADV010",
+    "name": "Clear Kayak Night Photoshoot",
+    "slug": "clear-kayak-night-photoshoot",
+    "category": "adventure",
+    "description": "LED-equipped clear kayak with guided photos under the stars.",
+    "durationMin": 60,
+    "ageMin": 6,
+    "operatedIn": [
+      "HL"
+    ],
+    "unit": "per_kayak",
+    "basePriceINR": 2500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Clear kayak",
+      "PFD"
+    ],
+    "safetyNotes": "Calm weather required; avoid full moon if seeking biolum.",
+    "season": "Nov-Mar",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV011",
+    "name": "Craggy Island Snorkel Charter",
+    "slug": "craggy-island-snorkel-charter",
+    "category": "water",
+    "description": "Private boat to Craggy Island for snorkeling near Diglipur.",
+    "durationMin": 180,
+    "ageMin": 8,
+    "operatedIn": [
+      "DG"
+    ],
+    "unit": "per_boat",
+    "basePriceINR": 2500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Mask",
+      "Snorkel",
+      "Fins",
+      "Life jacket"
+    ],
+    "safetyNotes": "Sea-state dependent; follow skipper's advice.",
+    "season": "Nov-Mar",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV012",
+    "name": "Eco SUP Cleanup (Community)",
+    "slug": "eco-sup-cleanup",
+    "category": "nature",
+    "description": "Stand-up paddle while participating in lagoon cleanup.",
+    "durationMin": 120,
+    "ageMin": 10,
+    "operatedIn": [
+      "HL"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 1500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "SUP board",
+      "Cleanup kit",
+      "PFD"
+    ],
+    "safetyNotes": "Follow eco guidelines; weather dependent.",
+    "season": "Nov-Mar",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV013",
+    "name": "Elephant Beach Trek (Guided)",
+    "slug": "elephant-beach-trek-guided",
+    "category": "trek",
+    "description": "Forest & beach trek from Havelock to Elephant Beach.",
+    "durationMin": 120,
+    "ageMin": 8,
+    "operatedIn": [
+      "HL"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 800.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Trekking shoes",
+      "Water"
+    ],
+    "safetyNotes": "Trail can be muddy; tide windows apply.",
+    "season": "Oct-Mar",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV014",
+    "name": "Game Fishing",
+    "slug": "game-fishing",
+    "category": "sport",
+    "description": "Short fishing trips targeting smaller species.",
+    "durationMin": 240,
+    "ageMin": null,
+    "operatedIn": [],
+    "unit": "per_person",
+    "basePriceINR": 15000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [],
+    "safetyNotes": "",
+    "season": "",
+    "difficulty": ""
+  },
+  {
+    "id": "ADV015",
+    "name": "Game Fishing - Full Day",
+    "slug": "game-fishing-full-day",
+    "category": "sport",
+    "description": "Longer-range runs targeting pelagics & reefs.",
+    "durationMin": 480,
+    "ageMin": 12,
+    "operatedIn": [
+      "HL"
+    ],
+    "unit": "per_boat",
+    "basePriceINR": 45000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Rods",
+      "Reels",
+      "Tackle",
+      "Bait",
+      "Safety gear"
+    ],
+    "safetyNotes": "Sea-state & weather dependent.",
+    "season": "Oct-Apr",
+    "difficulty": "challenging"
+  },
+  {
+    "id": "ADV016",
+    "name": "Game Fishing - Half Day",
+    "slug": "game-fishing-half-day",
+    "category": "sport",
+    "description": "Nearshore/offshore trolling & jigging with crew.",
+    "durationMin": 240,
+    "ageMin": 12,
+    "operatedIn": [
+      "HL"
+    ],
+    "unit": "per_boat",
+    "basePriceINR": 25000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Rods",
+      "Reels",
+      "Tackle",
+      "Bait",
+      "Safety gear"
+    ],
+    "safetyNotes": "Sea-state & weather dependent.",
+    "season": "Oct-Apr",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV017",
+    "name": "Glass-bottom Boat Ride",
+    "slug": "glass-bottom-boat",
+    "category": "family",
+    "description": "Boat with glass viewing panels over coral gardens.",
+    "durationMin": 30,
+    "ageMin": 0,
+    "operatedIn": [
+      "PB",
+      "NL",
+      "LI"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 800.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Life jackets"
+    ],
+    "safetyNotes": "Visibility weather-dependent.",
+    "season": "Oct-May",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV018",
+    "name": "Glass Bottom Boat Ride",
+    "slug": "glass-bottom-boat-ride",
+    "category": "family",
+    "description": "Enhanced viewing with specialized boats.",
+    "durationMin": 60,
+    "ageMin": null,
+    "operatedIn": [],
+    "unit": "per_person",
+    "basePriceINR": 1500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [],
+    "safetyNotes": "",
+    "season": "",
+    "difficulty": ""
+  },
+  {
+    "id": "ADV019",
+    "name": "Guided Jetski Safari (Lagoon)",
+    "slug": "guided-jetski-safari",
+    "category": "adrenaline",
+    "description": "Longer guided jetski route beyond the standard ride.",
+    "durationMin": 20,
+    "ageMin": 10,
+    "operatedIn": [
+      "PB",
+      "HL"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 1800.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "PFD",
+      "Helmet (where provided)"
+    ],
+    "safetyNotes": "Operator-defined speed & route rules.",
+    "season": "Oct-Apr",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV020",
+    "name": "Guided Snorkeling (Reef)",
+    "slug": "guided-snorkeling",
+    "category": "water",
+    "description": "Mask-snorkel-fins with guide to reefs and lagoon walls.",
+    "durationMin": 60,
+    "ageMin": 5,
+    "operatedIn": [
+      "PB",
+      "HL",
+      "NL",
+      "DG",
+      "LI"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 1000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Mask",
+      "Snorkel",
+      "Fins",
+      "Life jacket"
+    ],
+    "safetyNotes": "Non-swimmers can use life jackets; watch tides & currents.",
+    "season": "Oct-May",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV021",
+    "name": "Guided Tide-Pool & Natural Bridge Walk",
+    "slug": "guided-tidepool-natural-bridge-walk",
+    "category": "nature",
+    "description": "Guide-led walk around tide pools & rock bridge formations.",
+    "durationMin": 90,
+    "ageMin": 5,
+    "operatedIn": [
+      "NL"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 600.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Aqua shoes",
+      "Water"
+    ],
+    "safetyNotes": "Go at low tide; slippery rocks.",
+    "season": "Oct-Apr",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV022",
+    "name": "Heritage Photography Walk - Port Blair Town",
+    "slug": "heritage-photography-walk-pb",
+    "category": "cultural",
+    "description": "Photographer-led heritage & street photo walk in PB.",
+    "durationMin": 120,
+    "ageMin": 0,
+    "operatedIn": [
+      "PB"
+    ],
+    "unit": "per_group",
+    "basePriceINR": 1500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Guide/photographer"
+    ],
+    "safetyNotes": "Respect privacy & local rules.",
+    "season": "Year-round",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV023",
+    "name": "Heritage Walk - Cellular Jail & Ross",
+    "slug": "heritage-walk-cellular-ross",
+    "category": "cultural",
+    "description": "Guided history walk across Cellular Jail & Ross Island.",
+    "durationMin": 180,
+    "ageMin": 6,
+    "operatedIn": [
+      "PB"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 1200.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Entry tickets"
+    ],
+    "safetyNotes": "Ferry tickets extra for Ross.",
+    "season": "Oct-Apr",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV024",
+    "name": "Intro to Freediving (AIDA 1)",
+    "slug": "intro-to-freediving-aida1",
+    "category": "adventure",
+    "description": "Fundamentals of breath-hold diving in lagoon & open water.",
+    "durationMin": 480,
+    "ageMin": 16,
+    "operatedIn": [
+      "HL"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 12000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Mask",
+      "Snorkel",
+      "Fins",
+      "Wetsuit"
+    ],
+    "safetyNotes": "Swim ability required; equalization basics.",
+    "season": "Nov-Apr",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV025",
+    "name": "Jet Ski Ride",
+    "slug": "jet-ski-ride",
+    "category": "adrenaline",
+    "description": "High-speed ride with instructor in designated zone.",
+    "durationMin": 10,
+    "ageMin": 6,
+    "operatedIn": [
+      "PB",
+      "NL",
+      "HL"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 800.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "PFD",
+      "Helmet (where provided)"
+    ],
+    "safetyNotes": "Speed restricted for safety.",
+    "season": "Oct-Apr",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV026",
+    "name": "Jet Skiing",
+    "slug": "jet-skiing",
+    "category": "adrenaline",
+    "description": "High-speed solo jet skiing adventure.",
+    "durationMin": 15,
+    "ageMin": null,
+    "operatedIn": [],
+    "unit": "per_person",
+    "basePriceINR": 800.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [],
+    "safetyNotes": "",
+    "season": "",
+    "difficulty": ""
+  },
+  {
+    "id": "ADV027",
+    "name": "Kayaking",
+    "slug": "kayaking",
+    "category": "adventure",
+    "description": "Paddle through serene mangrove forests.",
+    "durationMin": 180,
+    "ageMin": null,
+    "operatedIn": [],
+    "unit": "per_person",
+    "basePriceINR": 2500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [],
+    "safetyNotes": "",
+    "season": "",
+    "difficulty": ""
+  },
+  {
+    "id": "ADV028",
+    "name": "LED Glass Boat Night Tour",
+    "slug": "led-glass-boat-night-tour",
+    "category": "family",
+    "description": "Nighttime clear-bottom/LED boat for reef viewing & photos.",
+    "durationMin": 30,
+    "ageMin": 0,
+    "operatedIn": [
+      "HL"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 1500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Vessel ticket",
+      "Life jacket"
+    ],
+    "safetyNotes": "Weather/visibility dependent.",
+    "season": "Nov-Mar",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV029",
+    "name": "Light-Tackle Reef Fishing (Skiff)",
+    "slug": "light-tackle-reef-fishing-skiff",
+    "category": "sport",
+    "description": "Inshore light tackle casting/jigging session from skiff.",
+    "durationMin": 180,
+    "ageMin": 12,
+    "operatedIn": [
+      "HL"
+    ],
+    "unit": "per_boat",
+    "basePriceINR": 12000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Rods",
+      "Reels",
+      "Tackle",
+      "Safety gear"
+    ],
+    "safetyNotes": "Sea-state dependent; catch & release encouraged.",
+    "season": "Oct-Apr",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV030",
+    "name": "Long Island Beach Camping (Permits)",
+    "slug": "long-island-beach-camping-permits",
+    "category": "adventure",
+    "description": "Overnight camping with permits near Lalaji Bay / approved zones.",
+    "durationMin": 720,
+    "ageMin": 12,
+    "operatedIn": [
+      "LI"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 3000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Tents",
+      "Sleeping bags",
+      "Meals"
+    ],
+    "safetyNotes": "Permits & approved zones mandatory.",
+    "season": "Nov-Mar",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV031",
+    "name": "Mangrove Kayaking (Day)",
+    "slug": "mangrove-kayaking-day",
+    "category": "adventure",
+    "description": "Guided paddle through mangrove creeks.",
+    "durationMin": 120,
+    "ageMin": 6,
+    "operatedIn": [
+      "HL",
+      "PB"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 2500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Kayak",
+      "Paddle",
+      "PFD"
+    ],
+    "safetyNotes": "Basic fitness required; respect wildlife.",
+    "season": "Nov-Mar",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV032",
+    "name": "Mount Manipur Park Picnic Walk",
+    "slug": "mount-manipur-picnic-walk",
+    "category": "nature",
+    "description": "Easy forest walk and viewpoints inside national park.",
+    "durationMin": 120,
+    "ageMin": 5,
+    "operatedIn": [
+      "PB"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Comfortable shoes",
+      "Water"
+    ],
+    "safetyNotes": "Park timings apply.",
+    "season": "Oct-Mar",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV033",
+    "name": "Munda Pahad Guided Trek",
+    "slug": "munda-pahad-guided-trek",
+    "category": "trek",
+    "description": "Guided coastal trek from Chidiya Tapu to cliff viewpoint.",
+    "durationMin": 120,
+    "ageMin": 8,
+    "operatedIn": [
+      "PB"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 1200.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Trekking shoes",
+      "Water"
+    ],
+    "safetyNotes": "Trail may be slippery; start early.",
+    "season": "Nov-Mar",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV034",
+    "name": "Neil Island Cycling Tour",
+    "slug": "neil-island-cycling-tour",
+    "category": "adventure",
+    "description": "Easy-paced guided cycling across Neil's villages & beaches.",
+    "durationMin": 120,
+    "ageMin": 8,
+    "operatedIn": [
+      "NL"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 600.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Bicycle",
+      "Helmet"
+    ],
+    "safetyNotes": "Hydrate well; sun protection recommended.",
+    "season": "Oct-Mar",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV035",
+    "name": "Neil Night Sky Stargazing",
+    "slug": "neil-night-sky-stargazing",
+    "category": "leisure",
+    "description": "Guided stargazing session on a dark beach in Neil.",
+    "durationMin": 60,
+    "ageMin": 5,
+    "operatedIn": [
+      "NL"
+    ],
+    "unit": "per_group",
+    "basePriceINR": 800.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Star maps",
+      "Laser pointer"
+    ],
+    "safetyNotes": "Cloud cover dependent; avoid full moon.",
+    "season": "Nov-Mar",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV036",
+    "name": "Night Dive (Certified)",
+    "slug": "night-dive-certified",
+    "category": "dive",
+    "description": "Guided night dive for certified divers; torches provided.",
+    "durationMin": 50,
+    "ageMin": 12,
+    "operatedIn": [
+      "HL"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 5000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Torch",
+      "Scuba kit"
+    ],
+    "safetyNotes": "Advanced/experience recommended; conditions-dependent.",
+    "season": "Nov-Apr",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV037",
+    "name": "PADI Advanced Open Water (2-3 days)",
+    "slug": "padi-advanced-open-water",
+    "category": "dive",
+    "description": "Skill expansion with adventure dives (deep, navigation, night etc.).",
+    "durationMin": 960,
+    "ageMin": 12,
+    "operatedIn": [
+      "HL"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 26000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Scuba kit",
+      "Course materials"
+    ],
+    "safetyNotes": "Must be PADI OW or equivalent.",
+    "season": "Oct-May",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV038",
+    "name": "PADI Enriched Air Nitrox Specialty (1 day)",
+    "slug": "padi-enriched-air-nitrox",
+    "category": "dive",
+    "description": "Learn to plan and dive with enriched air nitrox.",
+    "durationMin": 360,
+    "ageMin": 12,
+    "operatedIn": [
+      "HL",
+      "PB"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 9000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Course materials",
+      "Scuba kit"
+    ],
+    "safetyNotes": "Must be OW certified.",
+    "season": "Oct-May",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV039",
+    "name": "PADI Open Water Course (3-4 days)",
+    "slug": "padi-open-water-course",
+    "category": "dive",
+    "description": "Entry level certification course with theory, confined & open water dives.",
+    "durationMin": 1440,
+    "ageMin": 10,
+    "operatedIn": [
+      "HL"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 28000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Course materials",
+      "Scuba kit"
+    ],
+    "safetyNotes": "Medical questionnaire; study required.",
+    "season": "Oct-May",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV040",
+    "name": "PADI Rescue Diver (2-3 days)",
+    "slug": "padi-rescue-diver",
+    "category": "dive",
+    "description": "Develop prevention & rescue skills; includes scenarios.",
+    "durationMin": 1440,
+    "ageMin": 12,
+    "operatedIn": [
+      "HL"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 32000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Course materials",
+      "Scuba kit"
+    ],
+    "safetyNotes": "Prereq: Advanced OW + EFR.",
+    "season": "Oct-May",
+    "difficulty": "challenging"
+  },
+  {
+    "id": "ADV041",
+    "name": "Parasailing",
+    "slug": "parasailing",
+    "category": "adrenaline",
+    "description": "Ride with a partner.",
+    "durationMin": 10,
+    "ageMin": null,
+    "operatedIn": [],
+    "unit": "per_person",
+    "basePriceINR": 3000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [],
+    "safetyNotes": "",
+    "season": "",
+    "difficulty": ""
+  },
+  {
+    "id": "ADV042",
+    "name": "Parasailing (Lagoon)",
+    "slug": "parasailing-lagoon",
+    "category": "adrenaline",
+    "description": "Boat-tow parasailing over lagoon waters (availability varies).",
+    "durationMin": 8,
+    "ageMin": 12,
+    "operatedIn": [
+      "PB",
+      "HL"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 3000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "PFD",
+      "Harness"
+    ],
+    "safetyNotes": "Wind dependent; weight limits apply.",
+    "season": "Oct-Apr",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV043",
+    "name": "Private Cab - Full Day (PB)",
+    "slug": "private-cab-full-day-pb",
+    "category": "ground",
+    "description": "Chauffeured sightseeing around Port Blair in AC cab.",
+    "durationMin": 480,
+    "ageMin": 0,
+    "operatedIn": [
+      "PB"
+    ],
+    "unit": "per_vehicle",
+    "basePriceINR": 2200.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Vehicle",
+      "Driver"
+    ],
+    "safetyNotes": "Parking & entry fees extra.",
+    "season": "Year-round",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV044",
+    "name": "Private Speedboat Charter (Island Hopping)",
+    "slug": "private-speedboat-charter",
+    "category": "boat",
+    "description": "Custom itinerary to nearby islands/sandbars where permitted.",
+    "durationMin": 240,
+    "ageMin": 0,
+    "operatedIn": [
+      "PB",
+      "HL"
+    ],
+    "unit": "per_boat",
+    "basePriceINR": 18000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Boat",
+      "Crew",
+      "Fuel",
+      "Safety gear"
+    ],
+    "safetyNotes": "Permits & landing fees extra where applicable.",
+    "season": "Nov-Apr",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV045",
+    "name": "Rangat Mangrove Night Walk",
+    "slug": "rangat-mangrove-night-walk",
+    "category": "nature",
+    "description": "Guided nocturnal walk along mangrove boardwalks.",
+    "durationMin": 60,
+    "ageMin": 8,
+    "operatedIn": [
+      "RG"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 600.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Torch (red light)"
+    ],
+    "safetyNotes": "Respect wildlife; stay on boardwalk.",
+    "season": "Nov-Mar",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV046",
+    "name": "Ross & Smith Sandbar Kayak",
+    "slug": "ross-smith-sandbar-kayak",
+    "category": "adventure",
+    "description": "Kayaking across/along the sandbar at Ross & Smith (with permits).",
+    "durationMin": 60,
+    "ageMin": 8,
+    "operatedIn": [
+      "DG"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 1500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Kayak",
+      "PFD"
+    ],
+    "safetyNotes": "Permits & tide windows apply.",
+    "season": "Nov-Mar",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV047",
+    "name": "Saddle Peak Summit Trek (Full Day)",
+    "slug": "saddle-peak-summit-trek",
+    "category": "trek",
+    "description": "Challenging forest trek to highest point in Andamans.",
+    "durationMin": 480,
+    "ageMin": 14,
+    "operatedIn": [
+      "DG"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 2500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Trekking shoes",
+      "Water",
+      "Permit"
+    ],
+    "safetyNotes": "Fitness required; carry permits/ID.",
+    "season": "Nov-Feb",
+    "difficulty": "challenging"
+  },
+  {
+    "id": "ADV048",
+    "name": "Scuba Diving - Discover (Intro Dive)",
+    "slug": "scuba-discover-intro",
+    "category": "dive",
+    "description": "Beginner pool/shore skills + instructor-led reef dive (no certification).",
+    "durationMin": 60,
+    "ageMin": 10,
+    "operatedIn": [
+      "HL",
+      "PB",
+      "NL"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 4500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Wetsuit",
+      "BCD",
+      "Regulator",
+      "Weights",
+      "Tank"
+    ],
+    "safetyNotes": "Medical questionnaire; do not fly for 18-24h after diving.",
+    "season": "Oct-May",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV049",
+    "name": "Scuba Diving",
+    "slug": "scuba-diving",
+    "category": "dive",
+    "description": "Basic dives for non-certified divers.",
+    "durationMin": 45,
+    "ageMin": null,
+    "operatedIn": [],
+    "unit": "per_person",
+    "basePriceINR": 4500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [],
+    "safetyNotes": "",
+    "season": "",
+    "difficulty": ""
+  },
+  {
+    "id": "ADV050",
+    "name": "Scuba Diving - Fun Dive (Certified)",
+    "slug": "scuba-fun-dive",
+    "category": "dive",
+    "description": "Boat or shore dive for certified divers (OW or higher).",
+    "durationMin": 50,
+    "ageMin": 10,
+    "operatedIn": [
+      "HL",
+      "PB"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 4000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Full scuba kit"
+    ],
+    "safetyNotes": "Bring certification card; non-fly 18-24h.",
+    "season": "Oct-May",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV051",
+    "name": "Scuba Refresher / ReActivate",
+    "slug": "scuba-refresher-reactivate",
+    "category": "dive",
+    "description": "Skills refresh & supervised dive for certified divers out of practice.",
+    "durationMin": 180,
+    "ageMin": 10,
+    "operatedIn": [
+      "HL",
+      "PB"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 3000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Full scuba kit"
+    ],
+    "safetyNotes": "Medical questionnaire; non-fly 18-24h.",
+    "season": "Oct-May",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV052",
+    "name": "Sea Kart (Self-Drive)",
+    "slug": "sea-kart-self-drive",
+    "category": "adrenaline",
+    "description": "Self-drive sea kart circuit with instructor along a fixed route.",
+    "durationMin": 20,
+    "ageMin": 12,
+    "operatedIn": [
+      "PB"
+    ],
+    "unit": "per_kart",
+    "basePriceINR": 3500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "PFD",
+      "Briefing"
+    ],
+    "safetyNotes": "Weight/age limits apply.",
+    "season": "Oct-Apr",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV053",
+    "name": "Sea Karting",
+    "slug": "sea-karting",
+    "category": "adventure",
+    "description": "Adventure for experienced participants who can drive themselves.",
+    "durationMin": 20,
+    "ageMin": null,
+    "operatedIn": [],
+    "unit": "per_person",
+    "basePriceINR": 3500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [],
+    "safetyNotes": "",
+    "season": "",
+    "difficulty": ""
+  },
+  {
+    "id": "ADV054",
+    "name": "Sea Walk (Helmet Walk)",
+    "slug": "sea-walk",
+    "category": "water",
+    "description": "Helmet with air supply; walk on shallow seabed with instructor.",
+    "durationMin": 25,
+    "ageMin": 9,
+    "operatedIn": [
+      "HL",
+      "PB"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 3500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Helmet apparatus"
+    ],
+    "safetyNotes": "Not advised for severe sinus/cardiac issues.",
+    "season": "Oct-May",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV055",
+    "name": "Sea Walking",
+    "slug": "sea-walking",
+    "category": "water",
+    "description": "Shared sea walking experience with multiple participants.",
+    "durationMin": 20,
+    "ageMin": null,
+    "operatedIn": [],
+    "unit": "per_person",
+    "basePriceINR": 3500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [],
+    "safetyNotes": "",
+    "season": "",
+    "difficulty": ""
+  },
+  {
+    "id": "ADV056",
+    "name": "Seaplane Ride",
+    "slug": "seaplane-ride",
+    "category": "adventure",
+    "description": "Short rides offering aerial views of islands.",
+    "durationMin": 15,
+    "ageMin": null,
+    "operatedIn": [],
+    "unit": "per_person",
+    "basePriceINR": 4500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [],
+    "safetyNotes": "",
+    "season": "",
+    "difficulty": ""
+  },
+  {
+    "id": "ADV057",
+    "name": "Semi-Submarine Coral Safari",
+    "slug": "semi-submarine-coral-safari",
+    "category": "family",
+    "description": "Fixed-seat semi-submarine tour to view reefs without getting wet.",
+    "durationMin": 25,
+    "ageMin": 0,
+    "operatedIn": [
+      "PB"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 1850.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Vessel ticket"
+    ],
+    "safetyNotes": "Children must be accompanied by adult.",
+    "season": "Oct-May",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV058",
+    "name": "Snorkeling",
+    "slug": "snorkeling",
+    "category": "adventure",
+    "description": "Instructor-led snorkeling sessions for beginners.",
+    "durationMin": 60,
+    "ageMin": null,
+    "operatedIn": [],
+    "unit": "per_person",
+    "basePriceINR": 1500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [],
+    "safetyNotes": "",
+    "season": "",
+    "difficulty": ""
+  },
+  {
+    "id": "ADV059",
+    "name": "Sofa Tube Ride",
+    "slug": "sofa-tube-ride",
+    "category": "adrenaline",
+    "description": "Wide towable couch for a fast bumpy ride.",
+    "durationMin": 10,
+    "ageMin": 5,
+    "operatedIn": [
+      "PB",
+      "HL"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 600.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "PFD"
+    ],
+    "safetyNotes": "Secure all belongings; not for back issues.",
+    "season": "Oct-Apr",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV060",
+    "name": "Stand-Up Paddleboarding (SUP) Lesson",
+    "slug": "stand-up-paddleboarding-lesson",
+    "category": "water",
+    "description": "Basic balance & paddling skills lesson in calm lagoon.",
+    "durationMin": 60,
+    "ageMin": 8,
+    "operatedIn": [
+      "HL"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 1500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "SUP board",
+      "Paddle",
+      "PFD"
+    ],
+    "safetyNotes": "Weather dependent; entry-level.",
+    "season": "Oct-Apr",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV061",
+    "name": "Sunrise Dolphin Watch (PB Bay)",
+    "slug": "sunrise-dolphin-watch-pb",
+    "category": "wildlife",
+    "description": "Early-morning boat ride to look for dolphins & seabirds.",
+    "durationMin": 120,
+    "ageMin": 0,
+    "operatedIn": [
+      "PB"
+    ],
+    "unit": "per_boat",
+    "basePriceINR": 6000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Boat",
+      "Safety gear"
+    ],
+    "safetyNotes": "Wildlife not guaranteed; sea-state dependent.",
+    "season": "Nov-Mar",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV062",
+    "name": "Sunset / Dinner Cruise",
+    "slug": "sunset-dinner-cruise",
+    "category": "cruise",
+    "description": "Scenic bay cruise with music; dinner on board for select operators.",
+    "durationMin": 90,
+    "ageMin": 0,
+    "operatedIn": [
+      "PB"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 2000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Vessel ticket"
+    ],
+    "safetyNotes": "Exact inclusions vary by operator.",
+    "season": "Oct-Apr",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV063",
+    "name": "Sunset Photography Session",
+    "slug": "sunset-photography-session",
+    "category": "leisure",
+    "description": "Photographer-led golden hour shoot at iconic beaches.",
+    "durationMin": 60,
+    "ageMin": 0,
+    "operatedIn": [
+      "PB",
+      "HL",
+      "NL"
+    ],
+    "unit": "per_group",
+    "basePriceINR": 3000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Camera crew"
+    ],
+    "safetyNotes": "Check sunset time & tide.",
+    "season": "Oct-Mar",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ADV064",
+    "name": "SUP Mangrove Tour",
+    "slug": "sup-mangrove-tour",
+    "category": "water",
+    "description": "Stand-up paddle through mangrove creeks with guide.",
+    "durationMin": 90,
+    "ageMin": 10,
+    "operatedIn": [
+      "HL",
+      "PB"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 2500.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "SUP board",
+      "Paddle",
+      "PFD"
+    ],
+    "safetyNotes": "Basic balance needed; tide dependent.",
+    "season": "Nov-Mar",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV065",
+    "name": "Surf Lesson - Butler Bay",
+    "slug": "surf-lesson-butler-bay",
+    "category": "water",
+    "description": "Beginner surf coaching at Butler Bay (seasonal).",
+    "durationMin": 90,
+    "ageMin": 10,
+    "operatedIn": [
+      "LA"
+    ],
+    "unit": "per_person",
+    "basePriceINR": 2000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [
+      "Board",
+      "Leash",
+      "Rashguard"
+    ],
+    "safetyNotes": "Weather & swell dependent.",
+    "season": "Dec-Mar",
+    "difficulty": "moderate"
+  },
+  {
+    "id": "ADV066",
+    "name": "Surfing",
+    "slug": "surfing",
+    "category": "water",
+    "description": "Focused training for first-timers.",
+    "durationMin": 60,
+    "ageMin": null,
+    "operatedIn": [],
+    "unit": "per_person",
+    "basePriceINR": 2000.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [],
+    "safetyNotes": "",
+    "season": "",
+    "difficulty": ""
+  },
+  {
+    "id": "ADV067",
+    "name": "Trekking",
+    "slug": "trekking",
+    "category": "trek",
+    "description": "Short and easy trek through forests to the beach.",
+    "durationMin": 60,
+    "ageMin": null,
+    "operatedIn": [],
+    "unit": "per_person",
+    "basePriceINR": 800.0,
+    "bookingType": "Direct",
+    "apiSource": "not required",
+    "gearIncluded": [],
+    "safetyNotes": "",
+    "season": "",
+    "difficulty": ""
+  },
+{
+  "id": "ADV068",
+  "name": "Offbeat North Andaman Expedition",
+  "slug": "offbeat-north-andaman-expedition",
+  "category": "combo",
+  "description": "Multi-day, highly customised North Andaman plan combining Diglipur, Mayabunder and Rangat. For custom use only.",
+  "durationMin": 1440,
+  "ageMin": 12,
+  "operatedIn": ["DG", "MB", "RG", "RX"],
+  "unit": "per_person",
+  "basePriceINR": 0,
+  "bookingType": "Custom",
+  "apiSource": "not required",
+  "gearIncluded": [],
+  "safetyNotes": "Used as a template for complex trips; pricing generated manually.",
+  "season": "Oct-Apr",
+  "difficulty": "variable"
+}
+
+]
