@@ -1,0 +1,42 @@
+{
+  "general": {
+    "currency": "INR",
+    "defaultPeople": 2,
+    "includeAirportTransfers": true
+  },
+
+  "cabDefaults": {
+    "vehicleClasses": ["SEDAN", "SUV", "ERTIGA", "CRYSTA", "TEMPO"],
+    "tripTypes": ["point_to_point", "round_trip", "airport_transfer", "local_8hr"],
+    "nightStartHour": 19,
+    "nightEndHour": 5
+  },
+
+  "scooterRental": {
+    "dailyRateINR": 600,
+    "fuelCostPerKmINR": 3,
+    "defaultKmPerDay": 40
+  },
+
+  "bicycleRental": {
+    "dailyRateINR": 250
+  },
+
+  "boatExcursionDefaults": {
+    "permitFeeINR": 70,
+    "environmentFeeINR": 50,
+    "childDiscountPercent": 20
+  },
+
+  "ferryDefaults": {
+    "govtFerryNote": "Government ferry fares vary; sample fares for reference only.",
+    "privateOperatorSurchargePercent": 5
+  },
+
+  "hotelDefaults": {
+    "gstPercent": 12,
+    "extraAdultPercent": 30,
+    "extraChildPercent": 20,
+    "categoryOrder": ["budget", "standard", "deluxe", "premium", "luxury"]
+  }
+}
