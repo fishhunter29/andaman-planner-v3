@@ -1,0 +1,635 @@
+[
+  /* ============================
+     PORT BLAIR (PB)
+     ============================ */
+  {
+    "id": "H-PB-SEASHELL",
+    "islandId": "PB",
+    "name": "SeaShell Port Blair",
+    "area": "Marine Hill",
+    "starRating": 4,
+    "tier": "premium",
+    "roomType": "Executive Room",
+    "basePriceINR": 6500,
+    "seasonalMultipliers": {
+      "peak": 1.3,
+      "shoulder": 1.1,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 1800,
+    "maxAdults": 3,
+    "maxChildren": 2,
+    "tags": ["sea-view", "family", "honeymoon"],
+    "notes": "Popular city+sea view hotel; good for short stays."
+  },
+  {
+    "id": "H-PB-SENTINEL",
+    "islandId": "PB",
+    "name": "Hotel Sentinel",
+    "area": "Phoenix Bay",
+    "starRating": 3,
+    "tier": "midrange",
+    "roomType": "Deluxe Room",
+    "basePriceINR": 4200,
+    "seasonalMultipliers": {
+      "peak": 1.25,
+      "shoulder": 1.1,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 1500,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["family", "near-jetty"],
+    "notes": "Good midrange option close to Phoenix Bay jetty."
+  },
+  {
+    "id": "H-PB-FORTUNE",
+    "islandId": "PB",
+    "name": "Fortune Resort Bay Island",
+    "area": "Marine Hill",
+    "starRating": 4,
+    "tier": "premium",
+    "roomType": "Standard Sea-Facing",
+    "basePriceINR": 7000,
+    "seasonalMultipliers": {
+      "peak": 1.35,
+      "shoulder": 1.15,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 2200,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["sea-view", "honeymoon", "pool"],
+    "notes": "Classic sea-facing resort with pool and bar."
+  },
+  {
+    "id": "H-PB-RADHANAGAR",
+    "islandId": "PB",
+    "name": "Hotel Radhakrishna",
+    "area": "Goal Ghar",
+    "starRating": 2,
+    "tier": "budget",
+    "roomType": "Standard Non AC",
+    "basePriceINR": 1800,
+    "seasonalMultipliers": {
+      "peak": 1.15,
+      "shoulder": 1.05,
+      "lean": 0.85
+    },
+    "supportsExtraBed": false,
+    "extraBedINR": 0,
+    "maxAdults": 2,
+    "maxChildren": 1,
+    "tags": ["budget", "transit"],
+    "notes": "Simple stay; good for 1-night airport transit."
+  },
+  {
+    "id": "H-PB-TSG-EMERALD",
+    "islandId": "PB",
+    "name": "TSG Emerald View",
+    "area": "Aberdeen Bazaar",
+    "starRating": 3,
+    "tier": "midrange",
+    "roomType": "Executive Room",
+    "basePriceINR": 3800,
+    "seasonalMultipliers": {
+      "peak": 1.2,
+      "shoulder": 1.05,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 1300,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["shopping-area", "family"],
+    "notes": "Walkable to Aberdeen Bazaar and eateries."
+  },
+  {
+    "id": "H-PB-SUMIT",
+    "islandId": "PB",
+    "name": "Hotel Shompen by (S)Summit",
+    "area": "Middle Point",
+    "starRating": 3,
+    "tier": "midrange",
+    "roomType": "Deluxe Room",
+    "basePriceINR": 3600,
+    "seasonalMultipliers": {
+      "peak": 1.2,
+      "shoulder": 1.05,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 1200,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["family", "near-main-market"],
+    "notes": "Central location; good for sightseeing base."
+  },
+  {
+    "id": "H-PB-TANGO-WAVES",
+    "islandId": "PB",
+    "name": "Hotel Tango Waves",
+    "area": "Corbyn's Cove Road",
+    "starRating": 3,
+    "tier": "midrange",
+    "roomType": "Sea View Room",
+    "basePriceINR": 4500,
+    "seasonalMultipliers": {
+      "peak": 1.25,
+      "shoulder": 1.1,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 1500,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["near-beach", "family"],
+    "notes": "Close to Corbyn’s Cove beach."
+  },
+  {
+    "id": "H-PB-ROYAL-PALM",
+    "islandId": "PB",
+    "name": "Hotel Royal Palace",
+    "area": "Delanipur",
+    "starRating": 2,
+    "tier": "budget",
+    "roomType": "Standard Room",
+    "basePriceINR": 2000,
+    "seasonalMultipliers": {
+      "peak": 1.15,
+      "shoulder": 1.05,
+      "lean": 0.85
+    },
+    "supportsExtraBed": false,
+    "extraBedINR": 0,
+    "maxAdults": 2,
+    "maxChildren": 1,
+    "tags": ["budget", "transit"],
+    "notes": "Basic facilities; suitable for price-sensitive travelers."
+  },
+  {
+    "id": "H-PB-PEARL-PARADISE",
+    "islandId": "PB",
+    "name": "Pearl Paradise",
+    "area": "Prothrapur",
+    "starRating": 3,
+    "tier": "midrange",
+    "roomType": "Premium Room",
+    "basePriceINR": 3500,
+    "seasonalMultipliers": {
+      "peak": 1.2,
+      "shoulder": 1.05,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 1200,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["near-airport", "family"],
+    "notes": "Closer to airport; ideal for early flights."
+  },
+
+  /* ============================
+     HAVELOCK (HL)
+     ============================ */
+  {
+    "id": "H-HL-SEASHELL",
+    "islandId": "HL",
+    "name": "SeaShell Havelock",
+    "area": "Govind Nagar Beach",
+    "starRating": 4,
+    "tier": "premium",
+    "roomType": "Andaman Villa",
+    "basePriceINR": 9500,
+    "seasonalMultipliers": {
+      "peak": 1.35,
+      "shoulder": 1.15,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 2500,
+    "maxAdults": 3,
+    "maxChildren": 2,
+    "tags": ["beachfront", "pool", "honeymoon", "family"],
+    "notes": "Popular upscale resort with good beach frontage."
+  },
+  {
+    "id": "H-HL-BAREFOOT",
+    "islandId": "HL",
+    "name": "Barefoot at Havelock",
+    "area": "Radhanagar (Beach No.7)",
+    "starRating": 4,
+    "tier": "premium",
+    "roomType": "Nicobari Cottage",
+    "basePriceINR": 12000,
+    "seasonalMultipliers": {
+      "peak": 1.4,
+      "shoulder": 1.2,
+      "lean": 0.95
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 3000,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["eco-resort", "honeymoon", "near-radhanagar"],
+    "notes": "Forest-style eco resort; very popular among couples."
+  },
+  {
+    "id": "H-HL-SYM-BIOTIC",
+    "islandId": "HL",
+    "name": "Symbiotics Resort",
+    "area": "Govind Nagar",
+    "starRating": 3,
+    "tier": "midrange",
+    "roomType": "Villa Room",
+    "basePriceINR": 5500,
+    "seasonalMultipliers": {
+      "peak": 1.3,
+      "shoulder": 1.1,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 1800,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["midrange", "family"],
+    "notes": "Comfortable villas; walkable to beach."
+  },
+  {
+    "id": "H-HL-GREEN-VALLEY",
+    "islandId": "HL",
+    "name": "Green Valley Resort",
+    "area": "Govind Nagar",
+    "starRating": 2,
+    "tier": "budget",
+    "roomType": "Standard Cottage",
+    "basePriceINR": 2800,
+    "seasonalMultipliers": {
+      "peak": 1.2,
+      "shoulder": 1.05,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 1000,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["budget", "near-beach"],
+    "notes": "Simple cottages; good value for backpackers and groups."
+  },
+  {
+    "id": "H-HL-SANDY-WAVES",
+    "islandId": "HL",
+    "name": "Sandy Waves Beach Resort",
+    "area": "Beach No. 3",
+    "starRating": 3,
+    "tier": "midrange",
+    "roomType": "Sea Facing Cottage",
+    "basePriceINR": 6500,
+    "seasonalMultipliers": {
+      "peak": 1.3,
+      "shoulder": 1.1,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 2000,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["beachfront", "family"],
+    "notes": "Direct beach access; popular with families."
+  },
+  {
+    "id": "H-HL-BLUE-LAGOON",
+    "islandId": "HL",
+    "name": "Blue Lagoon Resort",
+    "area": "Govind Nagar",
+    "starRating": 2,
+    "tier": "budget",
+    "roomType": "Standard Hut",
+    "basePriceINR": 2500,
+    "seasonalMultipliers": {
+      "peak": 1.2,
+      "shoulder": 1.05,
+      "lean": 0.9
+    },
+    "supportsExtraBed": false,
+    "extraBedINR": 0,
+    "maxAdults": 2,
+    "maxChildren": 1,
+    "tags": ["budget", "backpacker"],
+    "notes": "Basic but popular with backpackers."
+  },
+  {
+    "id": "H-HL-TSG-BLUE",
+    "islandId": "HL",
+    "name": "TSG Blue Resort",
+    "area": "Radhanagar Beach",
+    "starRating": 4,
+    "tier": "premium",
+    "roomType": "Lagoon Room",
+    "basePriceINR": 9000,
+    "seasonalMultipliers": {
+      "peak": 1.35,
+      "shoulder": 1.15,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 2500,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["near-radhanagar", "honeymoon", "family"],
+    "notes": "Close to Radhanagar; ideal for couples & families."
+  },
+
+  /* ============================
+     NEIL (NL)
+     ============================ */
+  {
+    "id": "H-NL-SEASHELL",
+    "islandId": "NL",
+    "name": "SeaShell Neil",
+    "area": "Bharatpur",
+    "starRating": 4,
+    "tier": "premium",
+    "roomType": "Andaman Cottage",
+    "basePriceINR": 7500,
+    "seasonalMultipliers": {
+      "peak": 1.3,
+      "shoulder": 1.15,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 2200,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["beachfront", "honeymoon", "family"],
+    "notes": "Upscale resort near Bharatpur beach."
+  },
+  {
+    "id": "H-NL-PEARL-PARK",
+    "islandId": "NL",
+    "name": "Pearl Park Beach Resort",
+    "area": "Laxmanpur",
+    "starRating": 3,
+    "tier": "midrange",
+    "roomType": "Sea View Cottage",
+    "basePriceINR": 5500,
+    "seasonalMultipliers": {
+      "peak": 1.3,
+      "shoulder": 1.1,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 1800,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["sunset-view", "family"],
+    "notes": "Right next to Laxmanpur sunset beach."
+  },
+  {
+    "id": "H-NL-SUMMER-SAND",
+    "islandId": "NL",
+    "name": "Summer Sand Beach Resort",
+    "area": "Ramnagar",
+    "starRating": 3,
+    "tier": "midrange",
+    "roomType": "Cottage Room",
+    "basePriceINR": 5200,
+    "seasonalMultipliers": {
+      "peak": 1.25,
+      "shoulder": 1.1,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 1700,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["family", "quiet"],
+    "notes": "More peaceful stretch; good for longer stays."
+  },
+  {
+    "id": "H-NL-COCONUT-GROVE",
+    "islandId": "NL",
+    "name": "Coconut Grove",
+    "area": "Neil Jetty Area",
+    "starRating": 2,
+    "tier": "budget",
+    "roomType": "Standard Room",
+    "basePriceINR": 2600,
+    "seasonalMultipliers": {
+      "peak": 1.2,
+      "shoulder": 1.05,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 900,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["budget", "near-jetty"],
+    "notes": "Simple AC rooms; walkable from jetty."
+  },
+  {
+    "id": "H-NL-TSG-NEPTUNE",
+    "islandId": "NL",
+    "name": "TSG Neptune",
+    "area": "Bharatpur",
+    "starRating": 3,
+    "tier": "midrange",
+    "roomType": "Comfort Room",
+    "basePriceINR": 4200,
+    "seasonalMultipliers": {
+      "peak": 1.25,
+      "shoulder": 1.1,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 1500,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["family", "near-water-sports"],
+    "notes": "Close to glass-bottom rides & water sports at Bharatpur."
+  },
+
+  /* ============================
+     LONG ISLAND (LI)
+     ============================ */
+  {
+    "id": "H-LI-BLUE-PLANET",
+    "islandId": "LI",
+    "name": "Blue Planet Eco Resort",
+    "area": "Long Island Village",
+    "starRating": 2,
+    "tier": "budget",
+    "roomType": "Eco Hut",
+    "basePriceINR": 2200,
+    "seasonalMultipliers": {
+      "peak": 1.2,
+      "shoulder": 1.05,
+      "lean": 0.9
+    },
+    "supportsExtraBed": false,
+    "extraBedINR": 0,
+    "maxAdults": 2,
+    "maxChildren": 1,
+    "tags": ["eco-stay", "remote"],
+    "notes": "Rustic eco-huts; good as staging point to Lalaji Bay."
+  },
+  {
+    "id": "H-LI-PANORAMA",
+    "islandId": "LI",
+    "name": "Panorama Long Island",
+    "area": "Near Jetty",
+    "starRating": 2,
+    "tier": "budget",
+    "roomType": "Standard Room",
+    "basePriceINR": 2400,
+    "seasonalMultipliers": {
+      "peak": 1.2,
+      "shoulder": 1.05,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 800,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["budget", "near-jetty"],
+    "notes": "Simple stay options near Long Island jetty."
+  },
+
+  /* ============================
+     NORTH ANDAMAN CLUSTER (NA)
+     (Mayabunder, Rangat, Diglipur)
+     ============================ */
+  {
+    "id": "H-NA-PRISTINE-BAY",
+    "islandId": "NA",
+    "name": "Pristine Beach Resort",
+    "area": "Kalipur (Diglipur)",
+    "starRating": 3,
+    "tier": "midrange",
+    "roomType": "Sea Facing Cottage",
+    "basePriceINR": 4200,
+    "seasonalMultipliers": {
+      "peak": 1.25,
+      "shoulder": 1.1,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 1400,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["turtle-nesting", "offbeat"],
+    "notes": "Handy for Kalipur turtle nesting and Ramnagar."
+  },
+  {
+    "id": "H-NA-SADDLE-PEAK-VIEW",
+    "islandId": "NA",
+    "name": "Saddle Peak View Resort",
+    "area": "Diglipur Town",
+    "starRating": 2,
+    "tier": "budget",
+    "roomType": "Standard AC",
+    "basePriceINR": 2200,
+    "seasonalMultipliers": {
+      "peak": 1.2,
+      "shoulder": 1.05,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 800,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["budget", "trek-base"],
+    "notes": "Useful base for Saddle Peak trek day trips."
+  },
+  {
+    "id": "H-NA-AWESOME-ANDAMAN",
+    "islandId": "NA",
+    "name": "Aashiyana Resort Mayabunder",
+    "area": "Mayabunder",
+    "starRating": 2,
+    "tier": "budget",
+    "roomType": "Standard Room",
+    "basePriceINR": 2000,
+    "seasonalMultipliers": {
+      "peak": 1.2,
+      "shoulder": 1.05,
+      "lean": 0.9
+    },
+    "supportsExtraBed": false,
+    "extraBedINR": 0,
+    "maxAdults": 2,
+    "maxChildren": 1,
+    "tags": ["budget", "transit"],
+    "notes": "Simple stay for Avis Island / Karmatang trips."
+  },
+  {
+    "id": "H-NA-RANGAT-BAYVIEW",
+    "islandId": "NA",
+    "name": "Bayview Inn Rangat",
+    "area": "Rangat Town",
+    "starRating": 2,
+    "tier": "budget",
+    "roomType": "Standard AC Room",
+    "basePriceINR": 2100,
+    "seasonalMultipliers": {
+      "peak": 1.2,
+      "shoulder": 1.05,
+      "lean": 0.9
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 800,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["budget", "stopover"],
+    "notes": "Handy stop between Port Blair and Diglipur; close to Dhani Nallah."
+  },
+
+  /* ============================
+     LITTLE ANDAMAN (LA)
+     ============================ */
+  {
+    "id": "H-LA-SURF-JUNGLE",
+    "islandId": "LA",
+    "name": "Surf Jungle Hut",
+    "area": "Butler Bay",
+    "starRating": 2,
+    "tier": "budget",
+    "roomType": "Basic Hut",
+    "basePriceINR": 2000,
+    "seasonalMultipliers": {
+      "peak": 1.25,
+      "shoulder": 1.1,
+      "lean": 0.85
+    },
+    "supportsExtraBed": false,
+    "extraBedINR": 0,
+    "maxAdults": 2,
+    "maxChildren": 1,
+    "tags": ["surfing", "offbeat", "backpacker"],
+    "notes": "Simple surf-style huts near Butler Bay."
+  },
+  {
+    "id": "H-LA-ISLAND-RETREAT",
+    "islandId": "LA",
+    "name": "Island Retreat Little Andaman",
+    "area": "Hut Bay",
+    "starRating": 2,
+    "tier": "budget",
+    "roomType": "Standard Room",
+    "basePriceINR": 2300,
+    "seasonalMultipliers": {
+      "peak": 1.2,
+      "shoulder": 1.05,
+      "lean": 0.85
+    },
+    "supportsExtraBed": true,
+    "extraBedINR": 800,
+    "maxAdults": 3,
+    "maxChildren": 1,
+    "tags": ["budget", "transit"],
+    "notes": "Good base for waterfalls & lighthouse trips."
+  }
+]
